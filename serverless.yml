@@ -1,0 +1,93 @@
+service: serverless-sharp-image
+
+config: ${file(./config.yml)}
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  profile: serverless-admin
+  stage: dev
+  region: us-east-1
+
+custom:
+  webpackIncludeModules: true # enable auto including modules
+
+plugins:
+  - serverless-webpack
+
+package:
+  include:
+    - node_modules
+    - src
+  exclude:
+    - .serverless
+    - .webpack
+    - coverage
+    - src/test
+    - .babelrc
+    - .eslintignore
+    - .eslintrc
+    - .gitignore
+    - LICENSE
+    - package.json
+    - README.md
+    - serverless.yml
+    - webpack.config.js
+
+# you can add statements to the Lambda function's IAM Role here
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:ListBucket"
+#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:PutObject"
+#      Resource:
+#        Fn::Join:
+#          - ""
+#          - - "arn:aws:s3:::"
+#            - "Ref" : "ServerlessDeploymentBucket"
+
+# you can add packaging information here
+#package:
+#  exclude:
+#    - exclude-me.js
+#  artifact: my-service-code.zip
+
+functions:
+  sharpImage:
+    handler: handler.processImage
+    events:
+      - s3:
+        bucket: ${self:config.sourceBucket}
+        event: s3:ObjectCreated:*
+        rules:
+          - prefix: ${self:config.sourcePrefix}
+
+
+
+
+#    The following are a few example events you can configure
+#    NOTE: Please make sure to change your handler code to work with those events
+#    Check the event documentation for details
+#    events:
+#      - http:
+#          path: users/create
+#          method: get
+#      - s3: ${env:BUCKET}
+#      - schedule: rate(10 minutes)
+#      - sns: greeter-topic
+#      - stream: arn:aws:dynamodb:region:XXXXXX:table/foo/stream/1970-01-01T00:00:00.000
+
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"

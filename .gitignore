@@ -1,0 +1,16 @@
+*.log
+.DS_Store
+.nyc_output
+.serverless
+.webpack
+coverage
+node_modules
+.idea/
+dist/
+*.iml
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+awsconfig.json
+npm-debug.log
+dump/
