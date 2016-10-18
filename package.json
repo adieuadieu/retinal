@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/adieuadieu/serverless-sharp-image",
   "dependencies": {
-    "babel-runtime": "6.11.6"
+    "babel-runtime": "6.11.6",
+    "sharp": "0.16.1"
   },
   "devDependencies": {
     "ava": "0.16.0",

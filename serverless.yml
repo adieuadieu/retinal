@@ -1,6 +1,6 @@
 service: serverless-sharp-image
 
-config: ${file(./config.yml)}
+config: ${file(config.yml)}
 
 provider:
   name: aws
