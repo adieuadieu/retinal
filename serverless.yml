@@ -1,6 +1,6 @@
 service: serverless-sharp-image
 
-config: ${file(config.yml)}
+config: ${file(config.json)}
 
 provider:
   name: aws
@@ -19,6 +19,8 @@ package:
   include:
     - node_modules
     - src
+    - config.yml
+    - ./config.yml
   exclude:
     - .serverless
     - .webpack
@@ -59,14 +61,14 @@ functions:
   sharpImage:
     description: Resizes images
     memorySize: 1024
-    timeout: 6
+    timeout: 30
     handler: handler.processImage
     events:
       - s3:
-        bucket: ${file(config.yml):sourceBucket}
+        bucket: ${file(config.json):sourceBucket}
         event: s3:ObjectCreated:*
         rules:
-          - prefix: ${file(config.yml):sourcePrefix}
+          - prefix: ${file(config.json):sourcePrefix}
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -85,11 +87,11 @@ resources:
     imageSourceBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${file(config.yml):sourceBucket}
+        BucketName: ${file(config.json):sourceBucket}
     imageDestinationBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${file(config.yml):destinationBucket}
+        BucketName: ${file(config.json):destinationBucket}
 
 # you can add CloudFormation resource templates here
 #resources:

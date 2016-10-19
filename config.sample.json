@@ -1,0 +1,6 @@
+{
+  "sourceBucket": "something",
+  "sourcePrefix": "ok/",
+  "destinationBucket": "changeme",
+  "destinationPrefix": "yup/"
+}

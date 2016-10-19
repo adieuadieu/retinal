@@ -1,0 +1,11 @@
+provider:
+  name: aws
+  runtime: nodejs4.3
+  profile: serverless-admin
+  stage: dev
+  region: us-east-1
+
+sourceBucket: changeme
+sourcePrefix: something/
+destinationBucket: changeme-also
+destinationPrefix: something/

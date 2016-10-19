@@ -1,0 +1,6 @@
+{
+  "sourceBucket": "rt-lookbook-dev-media",
+  "sourcePrefix": "/",
+  "destinationBucket": "rt-lookbook-dev-media-resized",
+  "destinationPrefix": "/"
+}
