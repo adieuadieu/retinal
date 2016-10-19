@@ -1,4 +1,3 @@
-const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 
