@@ -36,4 +36,7 @@
 ```
 
 *all* - applied to the image before creating all the outputs
+
 *outputs* - define the files you wish to generate from the source
+
+Outputs are lists of Sharp's [resizing](http://sharp.readthedocs.io/en/stable/api/#resizing) and [operations](http://sharp.readthedocs.io/en/stable/api/#operations) methods you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
