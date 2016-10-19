@@ -1,7 +1,5 @@
 service: serverless-sharp-image
 
-config: ${file(config.json)}
-
 provider:
   name: aws
   runtime: nodejs4.3
@@ -18,13 +16,10 @@ plugins:
 package:
   include:
     - node_modules
-    - config.yml
-    - ./config.yml
   exclude:
     - .serverless
     - .webpack
     - coverage
-    - src/test
     - .babelrc
     - .eslintignore
     - .eslintrc

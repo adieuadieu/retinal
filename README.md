@@ -7,6 +7,10 @@
 - [ ] add postinstall hook to create config.json, event.json from samples
 - [ ] documentation
 
+## Issues
+- [ ] objects with spaces in their key name results in "NoSuchKey: The specified key does not exist.]" error
+- [ ] serverless stuff doesn't work correctly: bucket access policies, and auto-setup of trigger events
+
 ## Installation
 
 `npm install`

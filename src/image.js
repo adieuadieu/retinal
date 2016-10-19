@@ -6,6 +6,8 @@ import { makeKey } from './utils'
 const { outputs } = config
 
 export async function processItem ({ s3: { object: { key } } }) {
+  console.log('Processing: ', key)
+
   const { Body: image, ContentType: type } = await get({ Key: key })
   const streams = await sharpify(image, config)
   const context = { key, type }
@@ -18,7 +20,11 @@ export async function processItem ({ s3: { object: { key } } }) {
 }
 
 export async function imageHandler ({ Records: records }, context, callback) {
-  await Promise.all(records.forEach(processItem))
+  try {
+    await Promise.all(records.map(processItem))
+  } catch (error) {
+    console.error(error)
+  }
 
   callback(null, { ok: 'did stuff', records })
 }
