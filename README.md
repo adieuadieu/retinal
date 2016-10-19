@@ -1,5 +1,5 @@
 # Serverless Sharp Image
-[Serverless-based](https://www.github.com/serverless/serverless) Lambda function to resize images based on S3 trigger events with the awesome [Sharp](https://github.com/lovell/sharp) library
+[Serverless-based](https://www.github.com/serverless/serverless) Lambda function to resize images based on S3 trigger events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
 ## Todo
 - [ ] make it actually work/do something
@@ -26,24 +26,32 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
   "sourcePrefix": "ok/",
   "destinationBucket": "changeme",
   "destinationPrefix": "yup/",
+  "s3": {
+    "params": {}
+  },
   "all": [
-    ["toFormat", "webp"]
+    ["rotate"],
+    ["toFormat", "jpeg"],
+    ["quality", 80]
   ],
   "outputs": [
-    [
-      ["resize", 200, 200],
-      ["max"],
-      ["withoutEnlargement"],
-      ["toFormat", "jpeg"]
-    ],
-    [
-      ["resize", 100, 100],
-      ["max"],
-      ["withoutEnlargement"],
-      ["toFormat", "jpeg"]
-    ]
+    {
+      "operations": [
+        ["resize", 200, 200],
+        ["max"],
+        ["withoutEnlargement"]
+      ]
+    },
+    {
+      "operations": [
+        ["resize", 100, 100],
+        ["max"],
+        ["withoutEnlargement"]
+      ]
+    }
   ]
 }
+
 ```
 
 *all* - applied to the image before creating all the outputs
@@ -52,3 +60,5 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
 
 Outputs are lists of Sharp's [resizing](http://sharp.readthedocs.io/en/stable/api/#resizing) and [operations](http://sharp.readthedocs.io/en/stable/api/#operations) methods you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
 Note that method's are performed in order they appear in the configuration, and differing order can produce different results.
+
+key: uses [sprintf](https://github.com/alexei/sprintf.js) internally
