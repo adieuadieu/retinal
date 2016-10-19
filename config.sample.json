@@ -13,6 +13,10 @@
   ],
   "outputs": [
     {
+      "key": "%(filename)s-200x200.jpg",
+      "params": {
+        "ACL": "public-read"
+      },
       "operations": [
         ["resize", 200, 200],
         ["max"],
@@ -20,6 +24,7 @@
       ]
     },
     {
+      "key": "%(filename)s-100x100.jpg",
       "operations": [
         ["resize", 100, 100],
         ["max"],

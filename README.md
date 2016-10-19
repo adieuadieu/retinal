@@ -36,6 +36,10 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
   ],
   "outputs": [
     {
+      "key": "%(filename)s-200x200.jpg",
+      "params": {
+        "ACL": "public-read"
+      },
       "operations": [
         ["resize", 200, 200],
         ["max"],
@@ -43,6 +47,7 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
       ]
     },
     {
+      "key": "%(filename)s-100x100.jpg",
       "operations": [
         ["resize", 100, 100],
         ["max"],
