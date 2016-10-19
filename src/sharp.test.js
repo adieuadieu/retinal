@@ -7,12 +7,15 @@ const testImage = './test.jpg'
 
 const options = {
   all: [
+    ['toFormat', 'webp'],
     ['rotate', 90],
   ],
   outputs: [
     [
       ['resize', 100, 100],
-      ['toFormat', 'webp'],
+    ],
+    [
+      ['resize', 200, 200],
     ],
   ],
 }
@@ -27,6 +30,7 @@ test('optimise image based on configuration options', async (t) => {
 
     t.is(width, options.outputs[index][0][1], 'image height matches height of defined output')
     t.is(height, options.outputs[index][0][2], 'image width matches width of defined output')
-    t.is(format, options.outputs[index][1][1], 'image format matches format of defined output')
+
+    t.is(format, options.all[0][1], 'image format matches format defined for all images')
   }))
 })

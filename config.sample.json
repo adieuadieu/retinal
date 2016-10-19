@@ -2,5 +2,22 @@
   "sourceBucket": "something",
   "sourcePrefix": "ok/",
   "destinationBucket": "changeme",
-  "destinationPrefix": "yup/"
+  "destinationPrefix": "yup/",
+  "all": [
+    ["toFormat", "webp"]
+  ],
+  "outputs": [
+    [
+      ["resize", 200, 200],
+      ["max"],
+      ["withoutEnlargement"],
+      ["toFormat", "jpeg"]
+    ],
+    [
+      ["resize", 100, 100],
+      ["max"],
+      ["withoutEnlargement"],
+      ["toFormat", "jpeg"]
+    ]
+  ]
 }

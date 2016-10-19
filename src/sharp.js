@@ -6,7 +6,6 @@ export default async function sharpify (input, { all, outputs } = config) {
 
   /* preOperations are performed on the input image and shared across all the outputs */
   all.forEach(([func, ...parameters]) => {
-    console.log('op:', func, parameters)
     image[func](...parameters)
   })
 
@@ -16,13 +15,12 @@ export default async function sharpify (input, { all, outputs } = config) {
       const clone = await image.clone()
 
       output.forEach(async ([func, ...parameters]) => {
-        console.log('op:', func, parameters)
         await clone[func](...parameters)
       })
 
       return clone.toBuffer()
     })
   )
-console.log('buffers:', buffers)
+
   return buffers
 }
