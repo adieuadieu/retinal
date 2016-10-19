@@ -16,3 +16,4 @@ npm-debug.log
 dump/
 config.yml
 config.json
+event.json

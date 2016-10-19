@@ -11,26 +11,33 @@ const options = {
     ['rotate', 90],
   ],
   outputs: [
-    [
-      ['resize', 100, 100],
-    ],
-    [
-      ['resize', 200, 200],
-    ],
+    {
+      operations: [
+        ['resize', 100, 100],
+      ],
+    },
+    {
+      operations: [
+        ['resize', 200, 200],
+      ],
+    },
   ],
 }
 
-test('optimise image based on configuration options', async (t) => {
-  const images = await sharpify(testImage, options)
+const { all, outputs } = options
 
-  t.is(images.length, options.outputs.length, 'number of images matches number of defined outputs')
+test('optimise image based on configuration options', async (t) => {
+  const images = await sharpify(testImage, options, true)
+
+  t.is(images.length, outputs.length, 'number of images should match the number of defined outputs')
 
   await Promise.all(images.map(async (image, index) => {
+    const { operations } = outputs[index]
     const { width, height, format } = await sharp(image).metadata()
 
-    t.is(width, options.outputs[index][0][1], 'image height matches height of defined output')
-    t.is(height, options.outputs[index][0][2], 'image width matches width of defined output')
+    t.is(width, operations[0][1], 'image height should match height of defined output')
+    t.is(height, operations[0][2], 'image width should match width of defined output')
 
-    t.is(format, options.all[0][1], 'image format matches format defined for all images')
+    t.is(format, all[0][1], 'image format should match format defined for all images')
   }))
 })

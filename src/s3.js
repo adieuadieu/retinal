@@ -1,27 +1,28 @@
 import AWS from 'aws-sdk'
 import config from './config'
 
-const sourceBucket = new AWS.S3({ params: { Bucket: config.sourceBucket, Prefix: config.sourceBucketPrefix } })
-const destinationBucket = new AWS.S3({ params: { Bucket: config.destinationBucket, Prefix: config.destinationBucketPrefix } })
+const defaultParams = (config.s3 && config.s3.params) || {}
 
-export async function getObject (params) {
+const sourceBucket = new AWS.S3({
+  params: { Bucket: config.sourceBucket, Prefix: config.sourceBucketPrefix },
+})
+
+const destinationBucket = new AWS.S3({
+  params: { Bucket: config.destinationBucket, Prefix: config.destinationBucketPrefix },
+})
+
+export async function get (params = {}) {
   const s3Params = {
+    ...defaultParams,
     ...params,
   }
 
-  return await new Promise((resolve, reject) => {
-    sourceBucket.upload(s3Params, (error, response) => {
-      if (error) {
-        return reject(error)
-      }
-
-      return resolve(response)
-    })
-  })
+  return await sourceBucket.getObject(s3Params).promise()
 }
 
-export async function putObject (data, params) {
+export async function upload (data, params = {}) {
   const s3Params = {
+    ...defaultParams,
     ...params,
     Body: data,
   }
@@ -37,20 +38,12 @@ export async function putObject (data, params) {
   })
 }
 
-export async function deleteObjects (objects) {
+export async function remove (objects) {
   const s3Params = {
     Delete: {
       Objects: objects.map(object => ({ Key: object })),
     },
   }
 
-  return await new Promise((resolve, reject) => {
-    destinationBucket.deleteObjects(s3Params, (error, response) => {
-      if (error) {
-        return reject(error)
-      }
-
-      return resolve(response)
-    })
-  })
+  return await destinationBucket.deleteObjects(s3Params).promise()
 }

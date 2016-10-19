@@ -3,21 +3,28 @@
   "sourcePrefix": "ok/",
   "destinationBucket": "changeme",
   "destinationPrefix": "yup/",
+  "s3": {
+    "params": {}
+  },
   "all": [
-    ["toFormat", "webp"]
+    ["rotate"],
+    ["toFormat", "jpeg"],
+    ["quality", 80]
   ],
   "outputs": [
-    [
-      ["resize", 200, 200],
-      ["max"],
-      ["withoutEnlargement"],
-      ["toFormat", "jpeg"]
-    ],
-    [
-      ["resize", 100, 100],
-      ["max"],
-      ["withoutEnlargement"],
-      ["toFormat", "jpeg"]
-    ]
+    {
+      "operations": [
+        ["resize", 200, 200],
+        ["max"],
+        ["withoutEnlargement"]
+      ]
+    },
+    {
+      "operations": [
+        ["resize", 100, 100],
+        ["max"],
+        ["withoutEnlargement"]
+      ]
+    }
   ]
 }
