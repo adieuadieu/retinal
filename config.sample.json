@@ -1,10 +1,14 @@
 {
-  "sourceBucket": "something",
-  "sourcePrefix": "ok/",
-  "destinationBucket": "changeme",
-  "destinationPrefix": "yup/",
-  "s3": { // default S3 params applied to all S3 methods
-    "params": {}
+  "sourceBucket": "myCoolSourceBucket",
+  "sourcePrefix": "originals/",
+  "destinationBucket": "mySplendingPublicBucket",
+  "destinationPrefix": "processed/",
+  "s3": { // default S3 params applied to all S3 upload/put methods
+    "params": {
+      "Metadata": {
+        "generator": "created by a serverless-sharp-image lambda function"
+      }
+    }
   },
   "all": [ // these operations will be inherited by all outputs. Good place to specify the file format and quality.
     ["rotate"],

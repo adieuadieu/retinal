@@ -1,5 +1,8 @@
 import { sprintf } from 'sprintf-js'
 import mime from 'mime-types'
+import config from './config'
+
+const { destinationPrefix } = config
 
 export function makeKey (template = '%(key)', context) {
   const crumbs = context.key.split('/')
@@ -13,6 +16,6 @@ export function makeKey (template = '%(key)', context) {
     extension: mime.extension(context.type),
   }
 
-  return sprintf(template, values)
+  return `${destinationPrefix}${sprintf(template, values)}`
 }
 

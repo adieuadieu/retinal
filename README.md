@@ -26,18 +26,18 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
   "sourcePrefix": "ok/",
   "destinationBucket": "changeme",
   "destinationPrefix": "yup/",
-  "s3": { // default S3 params applied to all S3 methods
+  "s3": {
     "params": {}
   },
-  "all": [ // these operations will be inherited by all outputs. Good place to specify the file format and quality.
+  "all": [
     ["rotate"],
     ["toFormat", "jpeg"],
     ["quality", 80]
   ],
   "outputs": [
     {
-      "key": "%(filename)s-200x200.jpg", // given an object key of 'fancy/unicorn.png' the output key will be 'unicorn-200x200.jpg'
-      "params": { // add S3 params to the uploaded object
+      "key": "%(filename)s-200x200.jpg",
+      "params": {
         "ACL": "public-read"
       },
       "operations": [
@@ -47,7 +47,7 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
       ]
     },
     {
-      "key": "%(filename)s-100x100.jpg", // given an object key of 'why/hello/there/monkey.webp' the output key will be 'monkey-100x100.jpg'
+      "key": "%(filename)s-100x100.jpg",
       "operations": [
         ["resize", 100, 100],
         ["max"],

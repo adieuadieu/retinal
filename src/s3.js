@@ -13,7 +13,6 @@ const destinationBucket = new AWS.S3({
 
 export async function get (params = {}) {
   const s3Params = {
-    ...defaultParams,
     ...params,
   }
 
