@@ -17,7 +17,7 @@ export async function processItem ({ s3: { object: { key } } }) {
   )
 }
 
-export default async function imageHandler ({ Records: records }, context, callback) {
+export async function imageHandler ({ Records: records }, context, callback) {
   await Promise.all(records.forEach(processItem))
 
   callback(null, { ok: 'did stuff', records })
