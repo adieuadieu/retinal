@@ -3,8 +3,10 @@
   "sourcePrefix": "/originals",
   "destinationBucket": "rt-lookbook-dev-media",
   "destinationPrefix": "/processed",
-  "operations": [
-    ["resize", 100, 100],
+  "preOperations": [
     ["rotate", 90]
+  ],
+  "operations": [
+    ["resize", 100, 100]
   ]
 }

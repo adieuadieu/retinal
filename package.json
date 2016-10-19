@@ -15,7 +15,7 @@
     "deploy": "npm test && serverless deploy -v",
     "invoke": "serverless webpack invoke --function sharpImage --path ./event.json",
     "serve": "serverless webpack serve",
-    "postinstall": "echo 'TODO: better-npm-run postinstall'",
+    "postinstall": "echo 'TODO: better-npm-run postinstall'"
   },
   "repository": {
     "type": "git",
@@ -114,7 +114,10 @@
     }
   },
   "jscsConfig": {
-    "preset": "airbnb-base",
-    "excludeFiles": ["node_modules/**", "**/build/**", "**/node_modules/**"]
+    "preset": "airbnb",
+    "excludeFiles": ["node_modules/**", "**/build/**", "**/node_modules/**"],
+    "requireSemicolons": false,
+    "disallowSpacesInNamedFunctionExpression": false,
+    "disallowSpacesInFunctionDeclaration": false
   }
 }
