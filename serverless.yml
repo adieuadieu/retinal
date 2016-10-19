@@ -57,16 +57,16 @@ package:
 
 functions:
   sharpImage:
+    description: Resizes images
+    memorySize: 1024
+    timeout: 6
     handler: handler.processImage
     events:
       - s3:
-        bucket: ${self:config.sourceBucket}
+        bucket: ${file(config.yml):sourceBucket}
         event: s3:ObjectCreated:*
         rules:
-          - prefix: ${self:config.sourcePrefix}
-
-
-
+          - prefix: ${file(config.yml):sourcePrefix}
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -79,6 +79,17 @@ functions:
 #      - schedule: rate(10 minutes)
 #      - sns: greeter-topic
 #      - stream: arn:aws:dynamodb:region:XXXXXX:table/foo/stream/1970-01-01T00:00:00.000
+
+resources:
+  Resources:
+    imageSourceBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${file(config.yml):sourceBucket}
+    imageDestinationBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${file(config.yml):destinationBucket}
 
 # you can add CloudFormation resource templates here
 #resources:
