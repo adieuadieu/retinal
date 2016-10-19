@@ -1,6 +1,10 @@
 {
   "sourceBucket": "rt-lookbook-dev-media",
-  "sourcePrefix": "/",
-  "destinationBucket": "rt-lookbook-dev-media-resized",
-  "destinationPrefix": "/"
+  "sourcePrefix": "/originals",
+  "destinationBucket": "rt-lookbook-dev-media",
+  "destinationPrefix": "/processed",
+  "operations": [
+    ["resize", 100, 100],
+    ["rotate", 90]
+  ]
 }

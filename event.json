@@ -11,11 +11,11 @@
         "object": {
           "eTag": "0123456789abcdef0123456789abcdef",
           "sequencer": "0A1B2C3D4E5F678901",
-          "key": "HappyFace.jpg",
+          "key": "originals/23kjl1j3ljk123lkj123/test.jpg",
           "size": 1024
         },
         "bucket": {
-          "arn": "arn:aws:s3:::mybucket",
+          "arn": "arn:aws:s3:::rt-lookbook-dev-media",
           "name": "sourcebucket",
           "ownerIdentity": {
             "principalId": "EXAMPLE"
