@@ -3,6 +3,7 @@ import sharp from 'sharp'
 const options = { all: [], outputs: [] }
 
 export default async function sharpify (input, { all, outputs } = options, toBuffer = false) {
+console.log('sharpify:6')
   const image = sharp(input)
 
   /* preOperations are performed on the input image and shared across all the outputs */

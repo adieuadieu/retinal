@@ -7,6 +7,7 @@ const { outputs } = config
 
 export async function processItem ({ s3: { object: { key } } }) {
 console.log('processItem:9')
+try {
   const { Body: image, ContentType: type } = await get({ Key: key })
   const streams = await sharpify(image, config)
   const context = { key, type }
@@ -16,6 +17,10 @@ console.log('processItem:9')
       await upload(stream, { ...outputs[index].params, Key: makeKey(outputs[index].key, context) })
     )
   )
+} catch (error) {
+  console.log(error)
+}
+
 }
 
 export async function imageHandler ({ Records: records }, context, callback) {
