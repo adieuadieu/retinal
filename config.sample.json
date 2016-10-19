@@ -1,4 +1,10 @@
 {
+  "name": "serverless-sharp-image",
+  "provider": {
+    "profile": "serverless-admin",
+    "stage": "dev",
+    "region": "us-east-1"
+  },
   "sourceBucket": "myCoolSourceBucket",
   "sourcePrefix": "originals/",
   "destinationBucket": "mySplendingPublicBucket",

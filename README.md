@@ -2,7 +2,7 @@
 [Serverless-based](https://www.github.com/serverless/serverless) Lambda function to resize images based on S3 trigger events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
 ## Todo
-- [ ] make it actually work/do something
+- [x] make it actually work/do something
 - [ ] clean up dev-dependencies as there's shit in there we don't need
 - [ ] add postinstall hook to create config.json, event.json from samples
 - [ ] documentation

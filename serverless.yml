@@ -1,11 +1,11 @@
-service: serverless-sharp-image
+service: ${file(config.json):name}
 
 provider:
   name: aws
   runtime: nodejs4.3
-  profile: serverless-admin
-  stage: dev
-  region: us-east-1
+  profile: ${file(config.json):provider.profile}
+  stage: ${file(config.json):provider.stage}
+  region: ${file(config.json):provider.region}
 
 custom:
   webpackIncludeModules: true # enable auto including modules
