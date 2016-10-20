@@ -1,8 +1,7 @@
 # Serverless Sharp Image
-[Serverless-based](https://www.github.com/serverless/serverless) Lambda function to resize images based on S3 trigger events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
+[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function to resize images based on S3 trigger events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
 [What is it?](https://github.com/adieuadieu/serverless-sharp-image#what-is-it)
-
 
 [Installation](https://github.com/adieuadieu/serverless-sharp-image#installation)
 
@@ -12,7 +11,7 @@
 
 
 ## What is it?
-A tool to take images uploaded to an S3 bucket and produce one or more images of varying sizes, optimisations and other operations all controlled from a simple configuration file. It does this by creating an AWS Lambda function with the help of the [Serverless Framework]((https://www.github.com/serverless/serverless)).
+A tool to take images uploaded to an S3 bucket and produce one or more images of varying sizes, optimisations and other operations all controlled from a simple configuration file. It does this by creating an AWS Lambda function with the help of the [Serverless Framework](https://www.github.com/serverless/serverless).
 
 
 ## Todo
@@ -36,8 +35,10 @@ Write something here about about the need to compile sharp on an AWS AMI that ma
 
 ## Testing
 
-`export AWS_PROFILE=<your-profile-name>`
-`npm test`
+```bash
+export AWS_PROFILE=<your-profile-name>
+npm test
+```
 
 
 ## Configuration

@@ -26,7 +26,7 @@ const options = {
 
 const { all, outputs } = options
 
-test('optimise image based on configuration options', async (t) => {
+test('process input image based on configuration options', async (t) => {
   const images = await sharpify(testImage, options, true)
 
   t.is(images.length, outputs.length, 'number of images should match the number of defined outputs')
@@ -35,8 +35,8 @@ test('optimise image based on configuration options', async (t) => {
     const { operations } = outputs[index]
     const { width, height, format } = await sharp(image).metadata()
 
-    t.is(width, operations[0][1], 'image height should match height of defined output')
-    t.is(height, operations[0][2], 'image width should match width of defined output')
+    t.is(width, operations[0][1], 'image width should match height of defined output')
+    t.is(height, operations[0][2], 'image height should match width of defined output')
 
     t.is(format, all[0][1], 'image format should match format defined for all images')
   }))

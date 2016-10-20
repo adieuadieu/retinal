@@ -4,11 +4,11 @@ import config from './config'
 const defaultParams = (config.s3 && config.s3.params) || {}
 
 const sourceBucket = new AWS.S3({
-  params: { Bucket: config.sourceBucket, Prefix: config.sourcePrefix },
+  params: { Bucket: config.sourceBucket },
 })
 
 const destinationBucket = new AWS.S3({
-  params: { Bucket: config.destinationBucket, Prefix: config.destinationPrefix },
+  params: { Bucket: config.destinationBucket },
 })
 
 export async function get (params = {}) {

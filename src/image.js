@@ -24,7 +24,8 @@ export async function imageHandler ({ Records: records }, context, callback) {
     await Promise.all(records.map(processItem))
   } catch (error) {
     console.error(error)
+    return callback(error, { records })
   }
 
-  callback(null, { ok: 'did stuff', records })
+  return callback(null)
 }
