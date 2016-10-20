@@ -2,7 +2,7 @@
 import test from 'ava'
 import config from './config'
 import event from '../event.json'
-import { processItem } from './image'
+import processItem from './image'
 
 const { outputs } = config
 

@@ -5,7 +5,7 @@ import { makeKey } from './utils'
 
 const { outputs } = config
 
-export async function processItem ({ s3: { object: { key } } }) {
+export default async function processItem ({ s3: { object: { key } } }) {
   console.log('Processing: ', key)
 
   const { Body: image, ContentType: type } = await get({ Key: key })
@@ -19,13 +19,3 @@ export async function processItem ({ s3: { object: { key } } }) {
   )
 }
 
-export async function imageHandler ({ Records: records }, context, callback) {
-  try {
-    await Promise.all(records.map(processItem))
-  } catch (error) {
-    console.error(error)
-    return callback(error, { records })
-  }
-
-  return callback(null)
-}

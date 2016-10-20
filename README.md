@@ -1,5 +1,5 @@
 # Serverless Sharp Image
-[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function to resize images based on S3 trigger events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
+[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function to resize images triggered by S3 events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
 [What is it?](https://github.com/adieuadieu/serverless-sharp-image#what-is-it)
 
@@ -14,21 +14,19 @@
 A tool to take images uploaded to an S3 bucket and produce one or more images of varying sizes, optimisations and other operations all controlled from a simple configuration file. It does this by creating an AWS Lambda function with the help of the [Serverless Framework](https://www.github.com/serverless/serverless).
 
 
-## Todo
-- [x] make it actually work/do something
-- [ ] clean up dev-dependencies as there's shit in there we don't need
-- [ ] add postinstall hook to create config.json, event.json from samples
-- [ ] documentation
-
-
-## Issues
-- [ ] objects with spaces in their key name results in "NoSuchKey: The specified key does not exist.]" error
-- [ ] serverless stuff doesn't work correctly: bucket access policies, and auto-setup of trigger events
-
-
 ## Installation
 
-`npm install`
+```bash
+serverless install --url https://github.com/adieuadieu/serverless-sharp-image
+cd serverless-sharp-image
+npm install
+```
+
+Then, copy the sample config and tweak it for your needs.
+
+```bash
+cp config.sample.json config.json
+```
 
 Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon
 
@@ -86,8 +84,21 @@ npm test
 
 *outputs* - define the files you wish to generate from the source
 
-Outputs are lists of Sharp's [resizing](http://sharp.readthedocs.io/en/stable/api/#resizing) and [operations](http://sharp.readthedocs.io/en/stable/api/#operations) methods you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
+Outputs are lists of Sharp's [methods](http://sharp.readthedocs.io/en/stable/api/#resizing) you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
 Note that method's are performed in order they appear in the configuration, and differing order can produce different results.
 
 - key: uses [sprintf](https://github.com/alexei/sprintf.js) internally
 - params: set some specific S3 options for the image when uploaded to the destination S3 bucket. See more about the param options on the [AWS S3's upload method documentation](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)
+
+
+## Todo
+- [x] make it actually work/do something
+- [ ] clean up dev-dependencies as there's shit in there we don't need
+- [ ] add postinstall hook to create config.json, event.json from samples
+- [ ] documentation
+
+
+## Issues
+- [ ] objects with spaces in their key name results in "NoSuchKey: The specified key does not exist.]" error
+- [ ] serverless stuff doesn't work correctly: bucket access policies, and auto-setup of trigger events
+

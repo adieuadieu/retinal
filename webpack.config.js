@@ -1,8 +1,7 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
-  entry: './src',
+  entry: './src/handler',
   target: 'node',
   module: {
     loaders: [
@@ -22,7 +21,4 @@ module.exports = {
   },
   externals: [nodeExternals()], // exclude external modules
   //externals: ['sharp'],
-  plugins: [
-    //new CopyWebpackPlugin([{ from: 'lib/sharp', to: 'node_modules/sharp' }]), // copy the sharp and libvips pre-compiled for lambda execution environment
-  ],
 }
