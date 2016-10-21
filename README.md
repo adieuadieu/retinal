@@ -1,5 +1,5 @@
 # Serverless Sharp Image
-[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function to resize images triggered by S3 events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
+[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function triggered by S3 events to resize images with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
 1. [What is it?](#what-is-it)
 1. [Installation](#installation)
