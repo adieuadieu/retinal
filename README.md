@@ -1,13 +1,10 @@
 # Serverless Sharp Image
 [Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function to resize images triggered by S3 events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
-[What is it?](https://github.com/adieuadieu/serverless-sharp-image#what-is-it)
-
-[Installation](https://github.com/adieuadieu/serverless-sharp-image#installation)
-
-[Testing](https://github.com/adieuadieu/serverless-sharp-image#testing)
-
-[Configuration](https://github.com/adieuadieu/serverless-sharp-image#configuration)
+1. [What is it?](#what-is-it)
+1. [Installation](#installation)
+1. [Testing](#testing)
+1. [Configuration](#configuration)
 
 
 ## What is it?
@@ -15,20 +12,25 @@ A tool to take images uploaded to an S3 bucket and produce one or more images of
 
 
 ## Installation
+Installation can be achieved with the following commands
 
 ```bash
-serverless install --url https://github.com/adieuadieu/serverless-sharp-image
+git clone https://github.com/adieuadieu/serverless-sharp-image
 cd serverless-sharp-image
 npm install
 ```
 
-Then, copy the sample config and tweak it for your needs.
+Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration)
+
+
+## Deployment
 
 ```bash
-cp config.sample.json config.json
+npm deploy
 ```
-
 Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon
+
+When deploying into production, it would be prudent to deploy from an environment which is similar to that of AWS Lambda. More on that is available [here](http://sharp.readthedocs.io/en/stable/install/#aws-lambda).
 
 
 ## Testing
@@ -40,6 +42,7 @@ npm test
 
 
 ## Configuration
+The lambda service is designed to be controlled by configuration. From the configuration you can setup how one or more images will be manipulated, with direct access to the underlying methods of Sharp for full control.
 
 ```json
 {
