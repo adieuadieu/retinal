@@ -1,4 +1,3 @@
-const rimraf = require('rimraf')
 const targz = require('tar.gz')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -19,6 +18,12 @@ function SpecialPoop (archive, to) {
     },
   }
 }
+
+- next attempt:
+ - unzip the sharp package
+ - remove include and lib folders (could be handled by removing them before we zip, need to rezip anyway to make it not nested in a node_modules folder)
+ - in code, maybe in sharp.js, check for include/lib folder in node_modules/sharp and if non, unzip the libvips tarball.
+  - ? add a global into webpack which checks for broken symlink in lib folder to see if we're on a mac or linux, then disable the code depending on global?
 
 module.exports = {
   entry: './src/handler',

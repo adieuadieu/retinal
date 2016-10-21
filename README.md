@@ -90,12 +90,46 @@ Note that method's are performed in order they appear in the configuration, and 
 - key: uses [sprintf](https://github.com/alexei/sprintf.js) internally
 - params: set some specific S3 options for the image when uploaded to the destination S3 bucket. See more about the param options on the [AWS S3's upload method documentation](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)
 
+### Available arguments for use in the output object key
+
+- **key**
+  The full object key with which the service was invoked
+  Example:
+    *Given object key*: `unicorns/and/pixie/sticks/omg.jpg`
+    *%(key)s*: `unicorns/and/pixie/sticks/omg.jpg`
+- **type**
+  The Content-Type of the object, as returned by S3
+  Example:
+    *%(type)s*: image/jpeg
+- **crumbs**:
+  The crumbs of the S3 object as an array (e.g. the object key split by "/", not including the filename)
+  Example:
+    *Given object key*: `unicorns/and/pixie/sticks/omg.jpg`
+    *%(crumbs[0])s*: `unicorns`
+    *%(crumbs[2])s*: `pixies`
+- **directory**:
+  The "directory" of the S3 object
+  Example:
+    *Given object key*: `unicorns/and/pixie/sticks/omg.jpg`
+    *%(directory)s*: `unicorns/and/pixie/sticks`
+- **filename**:
+  The file name (minus the last extension)
+  Example:
+    *Given object key*: `unicorns/and/pixie/sticks/omg.jpg`
+    *%(filename)s*: `omg`
+- **extension**:
+  The file's extension determined by the Content-Type returned by S3
+  Example:
+    *Given Content-Type*: image/png
+    *%(extension)s*: `png`
+
 
 ## Todo
 - [x] make it actually work/do something
 - [ ] clean up dev-dependencies as there's shit in there we don't need
 - [ ] add postinstall hook to create config.json, event.json from samples
 - [ ] documentation
+- [ ] fail gracefully when the S3 event is for a non-image object
 
 
 ## Issues
