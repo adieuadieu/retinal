@@ -1,13 +1,11 @@
 # Serverless Sharp Image
-[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function to resize images triggered by S3 events with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
+[Serverless Framework-based](https://www.github.com/serverless/serverless) Lambda function triggered by S3 events to resize images with the awesome [Sharp](https://github.com/lovell/sharp) library. It's behaviour can be controlled entirely by configuration.
 
-[What is it?](https://github.com/adieuadieu/serverless-sharp-image#what-is-it)
-
-[Installation](https://github.com/adieuadieu/serverless-sharp-image#installation)
-
-[Testing](https://github.com/adieuadieu/serverless-sharp-image#testing)
-
-[Configuration](https://github.com/adieuadieu/serverless-sharp-image#configuration)
+1. [What is it?](#what-is-it)
+1. [Installation](#installation)
+1. [Testing](#testing)
+1. [Configuration](#configuration)
+1. [Troubleshooting](#troubleshooting)
 
 
 ## What is it?
@@ -15,20 +13,25 @@ A tool to take images uploaded to an S3 bucket and produce one or more images of
 
 
 ## Installation
+Installation can be achieved with the following commands
 
 ```bash
-serverless install --url https://github.com/adieuadieu/serverless-sharp-image
+git clone https://github.com/adieuadieu/serverless-sharp-image
 cd serverless-sharp-image
 npm install
 ```
 
-Then, copy the sample config and tweak it for your needs.
+Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration)
+
+
+## Deployment
 
 ```bash
-cp config.sample.json config.json
+npm deploy
 ```
-
 Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon
+
+When deploying into production, it would be prudent to deploy from an environment which is similar to that of AWS Lambda. More on that is available [here](http://sharp.readthedocs.io/en/stable/install/#aws-lambda).
 
 
 ## Testing
@@ -40,6 +43,7 @@ npm test
 
 
 ## Configuration
+The lambda service is designed to be controlled by configuration. From the configuration you can setup how one or more images will be manipulated, with direct access to the underlying methods of Sharp for full control.
 
 ```json
 {
@@ -136,12 +140,22 @@ Note that method's are performed in order they appear in the configuration, and 
     `%(extension)s` - "png"  
 
 
-## Todo
-- [x] make it actually work/do something
-- [ ] clean up dev-dependencies as there's shit in there we don't need
-- [ ] add postinstall hook to create config.json, event.json from samples
-- [ ] documentation
-- [ ] fail gracefully when the S3 event is for a non-image object
+## Troubleshooting
+
+#### I keep getting a timeout error when deploying and it's really annoying.
+Indeed, that is annoying. I had the same problem, and so that's why it's now here in this troubleshooting section. This may be an issue in the underlying AWS SDK when using a slower Internet connection. Try changing the `AWS_CLIENT_TIMEOUT` environment variable to a higher value. For example, in your command prompt enter the following and try deploying again:
+
+```bash
+export AWS_CLIENT_TIMEOUT=3000000
+```
+
+#### Wait, doesn't Sharp use libvips and node-gyp and therefore need to be compiled in an environment similar to the Lambda execution environment?
+Yes; that is true. But, it's kind of annoying to have to log into an EC2 instance just to deploy this lambda function, so we've bundled a pre-built version of Sharp and add it to the deployment bundle right before deploying. It was built on an EC2 instance running *Amazon Linux AMI 2015.09.1 x86_64 HVM GP2* - amzn-ami-hvm-2016.03.3.x86_64-gp2 (ami-6869aa05 in us-east-1). You can take a look at it in `lib/sharp-*.tar.gz`.
+
+#### Aaaaaarggghhhhhh!!!
+Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
+
+
 
 
 ## Issues
