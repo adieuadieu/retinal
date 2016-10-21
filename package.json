@@ -13,9 +13,8 @@
     "lint:eslint": "eslint $npm_package_config_jsSrc",
     "lint:jscs": "jscs $npm_package_config_jsSrc/",
     "deploy": "npm test && serverless deploy -v",
-    "invoke": "serverless webpack invoke --function sharpImage --path ./event.json",
-    "serve": "serverless webpack serve",
-    "postinstall": "cpy-cli config.sample.json config.json && cpy-cli event.sample.json event.json && targz extract lib/sharp-*.tar.gz lib/sharp"
+    "invoke": "serverless invoke --function sharpImage --path ./event.json --log",
+    "postinstall": "cpy config.sample.json config.json && cpy event.sample.json event.json"
   },
   "repository": {
     "type": "git",
@@ -54,20 +53,19 @@
     "babel-preset-es2017": "6.16.0",
     "babel-preset-stage-3": "6.17.0",
     "babel-register": "6.16.3",
-    "copy-webpack-plugin": "3.0.1",
     "cpy-cli": "1.0.1",
     "eslint": "3.8.1",
     "eslint-config-airbnb-base": "9.0.0",
     "eslint-plugin-ava": "3.1.1",
     "eslint-plugin-import": "2.0.1",
     "eslint-plugin-promise": "3.3.0",
+    "fs-extra": "0.30.0",
     "jscs": "3.0.7",
     "json-loader": "0.5.4",
     "serverless": "1.0.2",
     "serverless-webpack": "1.0.0-rc.2",
     "tar.gz": "1.0.5",
-    "webpack": "1.13.2",
-    "webpack-node-externals": "1.5.4"
+    "webpack": "1.13.2"
   },
   "ava": {
     "require": "babel-register",
@@ -105,6 +103,7 @@
     },
     "rules": {
       "no-console": 0,
+      "max-len": [2, 140, 2],
       "semi": [
         "error",
         "never"
@@ -128,6 +127,7 @@
     ],
     "requireSemicolons": false,
     "disallowSpacesInNamedFunctionExpression": false,
-    "disallowSpacesInFunctionDeclaration": false
+    "disallowSpacesInFunctionDeclaration": false,
+    "maximumLineLength": 140
   }
 }
