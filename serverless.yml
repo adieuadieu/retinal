@@ -8,15 +8,12 @@ provider:
   region: ${file(config.json):provider.region}
 
 custom:
-  webpackIncludeModules: true # enable auto including modules
+  webpackIncludeModules: false # enable auto including modules
 
 plugins:
   - serverless-webpack
 
 package:
-  include:
-    - node_modules
-    - lib/sharp
   exclude:
     - .serverless
     - .webpack
@@ -60,7 +57,7 @@ functions:
     handler: handler.processImage
     events:
       - s3:
-        bucket: ${self:provider.stage}-${file(config.json):sourceBucket}
+        bucket: ${file(config.json):sourceBucket}
         event: s3:ObjectCreated:*
         rules:
           - prefix: ${file(config.json):sourcePrefix}
@@ -82,11 +79,11 @@ resources:
     imageSourceBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:provider.stage}-${file(config.json):sourceBucket}
+        BucketName: ${file(config.json):sourceBucket}
     imageDestinationBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${self:provider.stage}-${file(config.json):destinationBucket}
+        BucketName: ${file(config.json):destinationBucket}
 
 
 # you can add CloudFormation resource templates here
