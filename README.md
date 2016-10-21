@@ -158,10 +158,3 @@ Yes; that is true. But, it's kind of annoying to have to log into an EC2 instanc
 #### Aaaaaarggghhhhhh!!!
 Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
 
-
-
-
-## Issues
-- [ ] objects with spaces in their key name results in "NoSuchKey: The specified key does not exist.]" error
-- [ ] serverless stuff doesn't work correctly: bucket access policies, and auto-setup of trigger events
-
