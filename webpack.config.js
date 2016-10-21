@@ -1,8 +1,26 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const nodeExternals = require('webpack-node-externals')
+/* eslint-disable import/no-extraneous-dependencies */
+const path = require('path')
+const targz = require('tar.gz')
+const webpack = require('webpack')
+
+function ExtractTarballPlugin (archive, to) {
+  return {
+    apply: (compiler) => {
+      compiler.plugin('emit', (compilation, callback) => {
+        targz().extract(path.resolve(archive), path.resolve(to), (error) => {
+          if (error) {
+            return console.error('Unable to extract archive ', archive, to, error.stack)
+          }
+
+          return callback()
+        })
+      })
+    },
+  }
+}
 
 module.exports = {
-  entry: './src',
+  entry: './src/handler',
   target: 'node',
   module: {
     loaders: [
@@ -20,9 +38,11 @@ module.exports = {
     path: '.webpack',
     filename: 'handler.js', // this should match the first part of function handler in serverless.yml
   },
-  externals: [nodeExternals()], // exclude external modules
-  //externals: ['sharp'],
+  externals: ['sharp', 'aws-sdk'],
   plugins: [
-    //new CopyWebpackPlugin([{ from: 'lib/sharp', to: 'node_modules/sharp' }]), // copy the sharp and libvips pre-compiled for lambda execution environment
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({ minimize: true, sourceMap: false, warnings: false }),
+    new ExtractTarballPlugin('lib/sharp-0.16.1-linux-x64.tar.gz', '.webpack/'),
   ],
 }

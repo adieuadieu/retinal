@@ -8,14 +8,12 @@ provider:
   region: ${file(config.json):provider.region}
 
 custom:
-  webpackIncludeModules: true # enable auto including modules
+  webpackIncludeModules: false # enable auto including modules
 
 plugins:
   - serverless-webpack
 
 package:
-  include:
-    - node_modules
   exclude:
     - .serverless
     - .webpack
@@ -76,16 +74,17 @@ functions:
 #      - sns: greeter-topic
 #      - stream: arn:aws:dynamodb:region:XXXXXX:table/foo/stream/1970-01-01T00:00:00.000
 
-#resources:
-#  Resources:
-#    imageSourceBucket:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: ${file(config.json):sourceBucket}
-#    imageDestinationBucket:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: ${file(config.json):destinationBucket}
+resources:
+  Resources:
+    imageSourceBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${file(config.json):sourceBucket}
+    imageDestinationBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${file(config.json):destinationBucket}
+
 
 # you can add CloudFormation resource templates here
 #resources:

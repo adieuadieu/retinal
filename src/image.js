@@ -5,8 +5,16 @@ import { makeKey } from './utils'
 
 const { outputs } = config
 
-export async function processItem ({ s3: { object: { key } } }) {
+export default async function processItem ({ eventName, s3: { object: { key } } = { object: { key: false } } }) {
   console.log('Processing: ', key)
+
+  if (eventName.split(':')[0] !== 'ObjectCreated') {
+    throw new Error(`Event does not contain a valid type (e.g. ObjectCreated). Invoked by event name: ${eventName}`)
+  }
+
+  if (!key) {
+    throw new Error(`Event does not contain a valid S3 Object Key. Invoked with key: ${key}`)
+  }
 
   const { Body: image, ContentType: type } = await get({ Key: key })
   const streams = await sharpify(image, config)
@@ -19,12 +27,3 @@ export async function processItem ({ s3: { object: { key } } }) {
   )
 }
 
-export async function imageHandler ({ Records: records }, context, callback) {
-  try {
-    await Promise.all(records.map(processItem))
-  } catch (error) {
-    console.error(error)
-  }
-
-  callback(null, { ok: 'did stuff', records })
-}
