@@ -139,10 +139,10 @@ Note that method's are performed in order they appear in the configuration, and 
   - Given Content-Type: `image/png`  
     `%(extension)s` - "png"  
 
+
 ## Troubleshooting
 
 #### I keep getting a timeout error when deploying and it's really annoying.
-
 Indeed, that is annoying. I had the same problem, and so that's why it's now here in this troubleshooting section. This may be an issue in the underlying AWS SDK when using a slower Internet connection. Try changing the `AWS_CLIENT_TIMEOUT` environment variable to a higher value. For example, in your command prompt enter the following and try deploying again:
 
 ```bash
@@ -150,17 +150,13 @@ export AWS_CLIENT_TIMEOUT=3000000
 ```
 
 #### Wait, doesn't Sharp use libvips and node-gyp and therefore need to be compiled in an environment similar to the Lambda execution environment?
-
 Yes; that is true. But, it's kind of annoying to have to log into an EC2 instance just to deploy this lambda function, so we've bundled a pre-built version of Sharp and add it to the deployment bundle right before deploying. It was built on an EC2 instance running *Amazon Linux AMI 2015.09.1 x86_64 HVM GP2* - amzn-ami-hvm-2016.03.3.x86_64-gp2 (ami-6869aa05 in us-east-1). You can take a look at it in `lib/sharp-*.tar.gz`.
 
 #### Aaaaaarggghhhhhh!!!
+Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
 
-Uuurrrggghhhhhh! It's OK to file an (Issue)[https://github.com/adieuadieu/serverless-sharp-image/issues/new]!
 
 
-## Todo
-- [ ] clean up dev-dependencies as there's shit in there we don't need
-- [ ] documentation
 
 ## Issues
 - [ ] objects with spaces in their key name results in "NoSuchKey: The specified key does not exist.]" error
