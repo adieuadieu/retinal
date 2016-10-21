@@ -28,7 +28,7 @@ Then, modify the `config.json` and `event.json` files, adapting them to your nee
 ## Deployment
 
 ```bash
-npm deploy
+npm run deploy
 ```
 Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon
 
@@ -42,16 +42,18 @@ export AWS_PROFILE=<your-profile-name>
 npm test
 ```
 
+You can also try out the service by invoking it. First deploy it with `npm run deploy` and then you can invoke your function with `npm run invoke`. This will invoke the function with the test event in `event.json`. You may need to tweak this file to match your setup.
+
 
 ## Configuration
 The lambda service is designed to be controlled by configuration. From the configuration you can setup how one or more images will be manipulated, with direct access to the underlying methods of Sharp for full control.
 
 ```json
 {
-  "sourceBucket": "something",
-  "sourcePrefix": "ok/",
-  "destinationBucket": "changeme",
-  "destinationPrefix": "yup/",
+  "sourceBucket": "my-sweet-unicorn-media",
+  "sourcePrefix": "originals/",
+  "destinationBucket": "my-sweet-unicorn-media",
+  "destinationPrefix": "web-ready/",
   "s3": {
     "params": {}
   },
