@@ -22,7 +22,7 @@ cd serverless-sharp-image
 npm install
 ```
 
-Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration)
+Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration).
 
 
 ## Deployment
