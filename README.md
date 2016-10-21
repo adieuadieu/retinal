@@ -5,6 +5,7 @@
 1. [Installation](#installation)
 1. [Testing](#testing)
 1. [Configuration](#configuration)
+1. [Troubleshooting](#troubleshooting)
 
 
 ## What is it?
@@ -140,15 +141,15 @@ Note that method's are performed in order they appear in the configuration, and 
 
 ## Troubleshooting
 
-### I keep getting a timeout error when deploying and it's really annoying.
+#### I keep getting a timeout error when deploying and it's really annoying.
 
-This may be an issue in the underlying AWS SDK when using a slower Internet connection. Try changing the `AWS_CLIENT_TIMEOUT` environment variable to a higher value. For example, in your command prompt enter the following and try deploying again:
+Indeed, that is annoying. I had the same problem, and so that's why it's now here in this troubleshooting section. This may be an issue in the underlying AWS SDK when using a slower Internet connection. Try changing the `AWS_CLIENT_TIMEOUT` environment variable to a higher value. For example, in your command prompt enter the following and try deploying again:
 
 ```bash
 export AWS_CLIENT_TIMEOUT=3000000
 ```
 
-### Wait, doesn't Sharp use libvips and node-gyp and therefore need to be compiled in an environment similar to the Lambda execution environment?
+#### Wait, doesn't Sharp use libvips and node-gyp and therefore need to be compiled in an environment similar to the Lambda execution environment?
 
 Yes; that is true. But, it's kind of annoying to have to log into an EC2 instance just to deploy this lambda function, so we've bundled a pre-built version of Sharp and add it to the deployment bundle right before deploying. You can take a look at it in `lib/sharp-*.tar.gz`
 
