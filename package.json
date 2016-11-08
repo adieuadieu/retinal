@@ -60,7 +60,6 @@
     "eslint-plugin-import": "2.0.1",
     "eslint-plugin-promise": "3.3.0",
     "fs-extra": "0.30.0",
-    "jscs": "3.0.7",
     "json-loader": "0.5.4",
     "serverless": "1.0.2",
     "serverless-webpack": "1.0.0-rc.2",
@@ -103,7 +102,11 @@
     },
     "rules": {
       "no-console": 0,
-      "max-len": [2, 140, 2],
+      "max-len": [
+        2,
+        140,
+        2
+      ],
       "semi": [
         "error",
         "never"
@@ -117,17 +120,5 @@
         "always"
       ]
     }
-  },
-  "jscsConfig": {
-    "preset": "airbnb",
-    "excludeFiles": [
-      "node_modules/**",
-      "**/build/**",
-      "**/node_modules/**"
-    ],
-    "requireSemicolons": false,
-    "disallowSpacesInNamedFunctionExpression": false,
-    "disallowSpacesInFunctionDeclaration": false,
-    "maximumLineLength": 140
   }
 }
