@@ -30,9 +30,12 @@ Then, modify the `config.json` and `event.json` files, adapting them to your nee
 ```bash
 npm run deploy
 ```
-Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon
 
-When deploying into production, it would be prudent to deploy from an environment which is similar to that of AWS Lambda. More on that is available [here](http://sharp.readthedocs.io/en/stable/install/#aws-lambda).
+This package bundles a lambda-execution-environment-ready version of the Sharp library which allows you to deploy the lambda function from any OS.
+
+TODO-ish:
+> Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon. When deploying into production, it would be prudent to deploy from an environment which is similar to that of AWS Lambda. More on that is available [here](http://sharp.readthedocs.io/en/stable/install/#aws-lambda).
+
 
 
 ## Testing
