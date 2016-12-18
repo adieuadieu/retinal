@@ -9,9 +9,8 @@
   "scripts": {
     "test": "ava",
     "watch:test": "ava --watch",
-    "lint": "npm run lint:eslint -s && npm run lint:jscs -s",
+    "lint": "npm run lint:eslint -s",
     "lint:eslint": "eslint $npm_package_config_jsSrc",
-    "lint:jscs": "jscs $npm_package_config_jsSrc/",
     "deploy": "npm test && serverless deploy -v",
     "invoke": "serverless invoke --function sharpImage --path ./event.json --log",
     "postinstall": "cpy config.sample.json config.json && cpy event.sample.json event.json"
