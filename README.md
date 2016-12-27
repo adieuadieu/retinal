@@ -19,7 +19,7 @@ Installation can be achieved with the following commands
 ```bash
 git clone https://github.com/adieuadieu/serverless-sharp-image
 cd serverless-sharp-image
-npm install
+yarn install
 ```
 
 Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration).
@@ -28,7 +28,7 @@ Then, modify the `config.json` and `event.json` files, adapting them to your nee
 ## Deployment
 
 ```bash
-npm run deploy
+yarn run deploy
 ```
 
 This package bundles a lambda-execution-environment-ready version of the Sharp library which allows you to deploy the lambda function from any OS.
@@ -42,10 +42,10 @@ TODO-ish:
 
 ```bash
 export AWS_PROFILE=<your-profile-name>
-npm test
+yarn test
 ```
 
-You can also try out the service by invoking it. First deploy it with `npm run deploy` and then you can invoke your function with `npm run invoke`. This will invoke the function with the test event in `event.json`. You may need to tweak this file to match your setup.
+You can also try out the service by invoking it. First deploy it with `yarn run deploy` and then you can invoke your function with `yarn run invoke`. This will invoke the function with the test event in `event.json`. You may need to tweak this file to match your setup.
 
 
 ## Configuration
@@ -108,33 +108,33 @@ Note that method's are performed in order they appear in the configuration, and 
 
 - **key** -
   The full object key with which the service was invoked
-  
+
   *Example*:
   - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
     `%(key)s` - "unicorns/and/pixie/sticks/omg.jpg"
-    
+
 - **type** -
   The Content-Type of the object, as returned by S3
-  
+
   *Example*:
   - Given Content-Type: `image/jpeg`  
     `%(type)s` - "image/jpeg"
 
 - **crumbs** -
   The crumbs of the S3 object as an array (e.g. the object key split by "/", not including the filename)
-  
+
   *Example*:
    - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
     `%(crumbs[0])s` - "unicorns"  
     `%(crumbs[2])s` - "pixies"  
- 
+
 - **directory** -
   The "directory" of the S3 object
-  
+
   *Example*:  
   - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
-    `%(directory)s` - "unicorns/and/pixie/sticks" 
-    
+    `%(directory)s` - "unicorns/and/pixie/sticks"
+
 - **filename** -
   The file name (minus the last extension)
 
@@ -144,7 +144,7 @@ Note that method's are performed in order they appear in the configuration, and 
 
 - **extension** -
   The file's extension determined by the Content-Type returned by S3
-  
+
   *Example*:  
   - Given Content-Type: `image/png`  
     `%(extension)s` - "png"  
@@ -166,4 +166,3 @@ Yes; that is true. But, it's kind of annoying to have to log into an EC2 instanc
 
 #### Aaaaaarggghhhhhh!!!
 Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
-
