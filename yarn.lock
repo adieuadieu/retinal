@@ -323,23 +323,9 @@ ava@0.17.0:
     unique-temp-dir "^1.0.0"
     update-notifier "^1.0.0"
 
-aws-sdk@^2.7.13:
-  version "2.7.19"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.7.19.tgz#63a0dfae44e7aab182cad05d5e60277f755ad80e"
-  dependencies:
-    buffer "4.9.1"
-    crypto-browserify "1.0.9"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.1.5"
-    url "0.10.3"
-    uuid "3.0.0"
-    xml2js "0.4.15"
-    xmlbuilder "2.6.2"
-
-aws-sdk@^2.7.20:
-  version "2.7.20"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.7.20.tgz#ab41e74661a49cbf1b4211e8de7a86b94369d313"
+aws-sdk@2.7.21, aws-sdk@^2.7.13:
+  version "2.7.21"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.7.21.tgz#9abc790b3d2498482437172e5948988d4870f94f"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -3990,9 +3976,9 @@ serverless-webpack@1.0.0-rc.3:
     npm-programmatic "0.0.5"
     webpack "^1.13.1"
 
-serverless@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.4.0.tgz#7229d98e8471010cca8eecb931cc1a1362e27d48"
+serverless@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.5.0.tgz#d6dd8cbda6895a1417e39fa47e1da63e5c51ddb1"
   dependencies:
     archiver "^1.1.0"
     async "^1.5.2"
