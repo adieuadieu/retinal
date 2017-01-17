@@ -11,7 +11,7 @@ const destinationBucket = new AWS.S3({
   params: { Bucket: config.destinationBucket },
 })
 
-export async function get (params = {}) {
+export function get (params = {}) {
   const s3Params = {
     ...params,
   }
@@ -19,7 +19,7 @@ export async function get (params = {}) {
   return sourceBucket.getObject(s3Params).promise()
 }
 
-export async function upload (data, params = {}) {
+export function upload (data, params = {}) {
   const s3Params = {
     ...defaultParams,
     ...params,
@@ -37,7 +37,7 @@ export async function upload (data, params = {}) {
   })
 }
 
-export async function remove (objects) {
+export function remove (objects) {
   const s3Params = {
     Delete: {
       Objects: objects.map(object => ({ Key: object })),
