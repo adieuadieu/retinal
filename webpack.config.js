@@ -43,6 +43,6 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({ minimize: true, sourceMap: false, warnings: false }),
-    new ExtractTarballPlugin('lib/sharp-0.16.1-linux-x64.tar.gz', '.webpack/'),
+    new ExtractTarballPlugin('lib/sharp-0.17.1-linux-x64.tar.gz', '.webpack/'),
   ],
 }
