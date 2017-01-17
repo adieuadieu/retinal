@@ -18,8 +18,7 @@
   },
   "all": [ // these operations will be inherited by all outputs. Good place to specify the file format and quality.
     ["rotate"],
-    ["toFormat", "jpeg"],
-    ["quality", 80]
+    ["toFormat", "jpeg", { "quality": 80 }]
   ],
   "outputs": [
     {

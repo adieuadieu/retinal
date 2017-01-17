@@ -62,8 +62,7 @@ The lambda service is designed to be controlled by configuration. From the confi
   },
   "all": [
     ["rotate"],
-    ["toFormat", "jpeg"],
-    ["quality", 80]
+    ["toFormat", "jpeg", { "quality": 80 }]
   ],
   "outputs": [
     {

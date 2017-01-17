@@ -16,7 +16,7 @@ export async function get (params = {}) {
     ...params,
   }
 
-  return await sourceBucket.getObject(s3Params).promise()
+  return sourceBucket.getObject(s3Params).promise()
 }
 
 export async function upload (data, params = {}) {
@@ -26,7 +26,7 @@ export async function upload (data, params = {}) {
     Body: data,
   }
 
-  return await new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     destinationBucket.upload(s3Params, (error, response) => {
       if (error) {
         return reject(error)
@@ -44,5 +44,5 @@ export async function remove (objects) {
     },
   }
 
-  return await destinationBucket.deleteObjects(s3Params).promise()
+  return destinationBucket.deleteObjects(s3Params).promise()
 }

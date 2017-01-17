@@ -9,12 +9,11 @@ export default async function sharpify (input, { all, outputs } = options, toBuf
   all.forEach(([func, ...parameters]) => image[func](...parameters))
 
   /* each output will produce a separate file */
-  return await Promise.all(
+  return Promise.all(
     outputs.map(async ({ operations }) => {
       const clone = await image.clone()
 
-      operations.forEach(async ([func, ...parameters]) => await clone[func](...parameters))
-
+      operations.forEach(([func, ...parameters]) => clone[func](...parameters))
       return toBuffer ? clone.toBuffer() : clone
     })
   )
