@@ -53,6 +53,7 @@
     "babel-preset-stage-3": "6.17.0",
     "babel-register": "6.18.0",
     "cpy-cli": "1.0.1",
+    "decompress": "^4.0.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-ava": "^4.0.1",
@@ -62,7 +63,6 @@
     "json-loader": "0.5.4",
     "serverless": "1.5.0",
     "serverless-webpack": "^1.0.0-rc.4",
-    "tar.gz": "1.0.5",
     "webpack": "1.14.0"
   },
   "ava": {
