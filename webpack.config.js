@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path')
-const webpack = require('webpack')
 const decompress = require('decompress')
+const webpack = require('webpack')
 
 function ExtractTarballPlugin (archive, to) {
   return {
