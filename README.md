@@ -4,13 +4,15 @@
 ## Contents
 1. [What is it?](#what-is-it)
 1. [Installation](#installation)
+1. [Setup](#setup)
 1. [Testing](#testing)
+1. [Deployment](#deployment)
 1. [Configuration](#configuration)
 1. [Troubleshooting](#troubleshooting)
 
 
 ## What is it?
-A tool to take images uploaded to an S3 bucket and produce one or more images of varying sizes, optimisations and other operations all controlled from a simple configuration file. It does this by creating an AWS Lambda function with the help of the [Serverless Framework](https://www.github.com/serverless/serverless).
+A tool to take images uploaded to an S3 bucket and produce one or more images of varying sizes, optimizations and other operations all controlled from a simple configuration file. It does this by creating an AWS Lambda function with the help of the [Serverless Framework](https://www.github.com/serverless/serverless).
 
 
 ## Installation
@@ -22,7 +24,48 @@ cd serverless-sharp-image
 yarn install
 ```
 
+(It is possible to exchange `yarn` for `npm` if `yarn` is too hipster for your taste. No problem.)
+
+Or, if you have `serverless` installed globally:
+
+```bash
+serverless install -u https://github.com/adieuadieu/serverless-sharp-image
+```
+
 Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration).
+
+
+## Setup
+
+### Credentials
+
+You must configure your AWS credentials either by defining `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environmental variables, or using an AWS profile. You can read more about this on the [Serverless Credentials Guide](https://serverless.com/framework/docs/providers/aws/guide/credentials/). It's a bit of a pain in the ass if you have many projects/credentials.
+
+In short, either:
+
+```bash
+export AWS_PROFILE=<your-profile-name>
+```
+
+or
+
+```bash
+export AWS_ACCESS_KEY_ID=<your-key-here>
+export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
+```
+
+
+## Testing
+
+Make sure the bucket in `config.json` exists.
+
+Then:
+
+```bash
+yarn test
+```
+
+You can also try out the service by invoking it. First deploy it with `yarn run deploy` and then you can invoke your function with `yarn run invoke`. This will invoke the function with the test event in `event.json`. You may need to tweak this file to match your setup.
 
 
 ## Deployment
@@ -35,17 +78,6 @@ This package bundles a lambda-execution-environment-ready version of the Sharp l
 
 TODO-ish:
 > Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon. When deploying into production, it would be prudent to deploy from an environment which is similar to that of AWS Lambda. More on that is available [here](http://sharp.readthedocs.io/en/stable/install/#aws-lambda).
-
-
-
-## Testing
-
-```bash
-export AWS_PROFILE=<your-profile-name>
-yarn test
-```
-
-You can also try out the service by invoking it. First deploy it with `yarn run deploy` and then you can invoke your function with `yarn run invoke`. This will invoke the function with the test event in `event.json`. You may need to tweak this file to match your setup.
 
 
 ## Configuration
