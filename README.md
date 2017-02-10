@@ -3,6 +3,7 @@
 
 [![CircleCI](https://img.shields.io/circleci/project/github/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
 [![David](https://img.shields.io/david/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
+[![David](https://img.shields.io/david/dev/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
 
 ## Contents
 1. [What is it?](#what-is-it)
