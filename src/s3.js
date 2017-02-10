@@ -26,15 +26,7 @@ export function upload (data, params = {}, bucket = destinationBucket) {
     Body: data,
   }
 
-  return new Promise((resolve, reject) => {
-    bucket.upload(s3Params, (error, response) => {
-      if (error) {
-        return reject(error)
-      }
-
-      return resolve(response)
-    })
-  })
+  return bucket.upload(s3Params).promise()
 }
 
 export function remove (objects, bucket = destinationBucket) {
