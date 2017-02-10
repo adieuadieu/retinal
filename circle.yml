@@ -1,7 +1,7 @@
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/reports
-    - ava --tap | tap-mocha-reporter xunit > $CIRCLE_TEST_REPORTS/reports/xunit.xml
-    - ava --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/ava.xml
+#    - ava --tap | tap-mocha-reporter xunit > $CIRCLE_TEST_REPORTS/reports/xunit.xml
+#    - ava --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/ava.xml
     - eslint --format junit src/ > $CIRCLE_TEST_REPORTS/reports/eslint.xml
     - npm test

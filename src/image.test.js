@@ -4,7 +4,7 @@ import event from '../event.json'
 import processItem from './image'
 
 const { outputs } = config
-let m
+let failsauce
 test('processItem()', async (t) => {
   try {
     await processItem({ eventName: 'fake-event' })
