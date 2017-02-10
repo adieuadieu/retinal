@@ -1,4 +1,6 @@
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/reports
-    - npm run lint && ava --tap | tap-mocha-reporter xunit > $CIRCLE_TEST_REPORTS/reports/xunit.xml
+#    - ava --tap | tap-mocha-reporter xunit > $CIRCLE_TEST_REPORTS/reports/xunit.xml
+    - ava --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/xunit.xml
+    - npm test

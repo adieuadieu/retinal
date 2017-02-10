@@ -63,7 +63,8 @@
     "serverless": "^1.6.1",
     "serverless-webpack": "^1.0.0-rc.4",
     "tap-mocha-reporter": "^3.0.3",
-    "webpack": "1.14.0"
+    "webpack": "1.14.0",
+    "tap-xunit": "^1.7.0"
   },
   "ava": {
     "require": "babel-register",
