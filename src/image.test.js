@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 import test from 'ava'
 import config from './config'
 import event from '../event.json'

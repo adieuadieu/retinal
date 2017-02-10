@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 import path from 'path'
 import test from 'ava'
 import sharp from 'sharp'
