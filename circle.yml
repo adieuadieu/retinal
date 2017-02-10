@@ -4,3 +4,4 @@ test:
     - ava --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/ava.xml
     - eslint --format junit src/ > $CIRCLE_TEST_REPORTS/reports/eslint.xml
     - npm test
+    - nyc report --reporter=text-lcov | coveralls
