@@ -3,12 +3,12 @@
   "provider": {
     "profile": "serverless-admin",
     "stage": "dev",
-    "region": "us-east-1"
+    "region": "us-west-2"
   },
-  "sourceBucket": "myCoolSourceBucket",
-  "sourcePrefix": "originals/",
-  "destinationBucket": "mySplendingPublicBucket",
-  "destinationPrefix": "processed/",
+  "sourceBucket": "marco-test-bucket",
+  "sourcePrefix": "serverless-sharp-image/incoming",
+  "destinationBucket": "marco-test-bucket",
+  "destinationPrefix": "serverless-sharp-image/processed/",
   "s3": {
     "params": {
       "Metadata": {
