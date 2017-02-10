@@ -3,23 +3,23 @@ import config from './config'
 
 const defaultParams = (config.s3 && config.s3.params) || {}
 
-const sourceBucket = new AWS.S3({
+export const sourceBucket = new AWS.S3({
   params: { Bucket: config.sourceBucket },
 })
 
-const destinationBucket = new AWS.S3({
+export const destinationBucket = new AWS.S3({
   params: { Bucket: config.destinationBucket },
 })
 
-export function get (params = {}) {
+export function get (params = {}, bucket = sourceBucket) {
   const s3Params = {
     ...params,
   }
 
-  return sourceBucket.getObject(s3Params).promise()
+  return bucket.getObject(s3Params).promise()
 }
 
-export function upload (data, params = {}) {
+export function upload (data, params = {}, bucket = destinationBucket) {
   const s3Params = {
     ...defaultParams,
     ...params,
@@ -27,7 +27,7 @@ export function upload (data, params = {}) {
   }
 
   return new Promise((resolve, reject) => {
-    destinationBucket.upload(s3Params, (error, response) => {
+    bucket.upload(s3Params, (error, response) => {
       if (error) {
         return reject(error)
       }
@@ -37,12 +37,12 @@ export function upload (data, params = {}) {
   })
 }
 
-export function remove (objects) {
+export function remove (objects, bucket = destinationBucket) {
   const s3Params = {
     Delete: {
       Objects: objects.map(object => ({ Key: object })),
     },
   }
 
-  return destinationBucket.deleteObjects(s3Params).promise()
+  return bucket.deleteObjects(s3Params).promise()
 }
