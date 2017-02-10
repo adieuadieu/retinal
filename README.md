@@ -192,8 +192,20 @@ export AWS_CLIENT_TIMEOUT=3000000
 ```
 </details>
 
-#### Wait, doesn't Sharp use libvips and node-gyp and therefore need to be compiled in an environment similar to the Lambda execution environment?
-Yes; that is true. But, it's kind of annoying to have to log into an EC2 instance just to deploy this lambda function, so we've bundled a pre-built version of Sharp and add it to the deployment bundle right before deploying. It was built on an EC2 instance running *Amazon Linux AMI 2015.09.1 x86_64 HVM GP2* - amzn-ami-hvm-2016.03.3.x86_64-gp2 (ami-6869aa05 in us-east-1). You can take a look at it in `lib/sharp-*.tar.gz`.
+<details>
+  <summary>Wait, doesn't Sharp use libvips and node-gyp and therefore need to be compiled in an environment similar to the Lambda execution environment?</summary>
+  Yes; that is true. But, it's kind of annoying to have to log into an EC2 instance just to deploy this lambda function, so we've bundled a pre-built version of Sharp and add it to the deployment bundle right before deploying. It was built on an EC2 instance running *Amazon Linux AMI 2015.09.1 x86_64 HVM GP2* - amzn-ami-hvm-2016.03.3.x86_64-gp2 (ami-6869aa05 in us-east-1). You can take a look at it in `lib/sharp-*.tar.gz`.
+</details>
 
-#### Aaaaaarggghhhhhh!!!
-Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
+<details>
+  <summary>I got this error when installing: `Error: Python executable "/Users/**/miniconda3/bin/python" is v3.5.2, which is not supported by gyp.` What do I do?</summary>
+  - Make sure you've got a recent version of `npm` installed.
+  - Make sure you've got a recent version of node-gyp installed. You can do `npm install node-gyp -g` to make sure.
+  - Set the path to python2 on your system. For example: `npm config set python /usr/bin/python2.7`
+  - Having done the above, delete the `node_modules` directory in the project, and reinstall with `yarn install`
+</details>
+
+<details>
+  <summary>Aaaaaarggghhhhhh!!!</summary>
+  Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
+</details>
