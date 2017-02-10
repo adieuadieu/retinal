@@ -5,11 +5,7 @@ import processItem from './image'
 
 const { outputs } = config
 
-test('Failsauce', (t) => {
-  t.is('fail', 'superfail', 'Lots of fail. :-(')
-})
-
-/*test('processItem()', async (t) => {
+test('processItem()', async (t) => {
   try {
     await processItem({ eventName: 'fake-event' })
     t.fail('Should throw error when event name is invalid.')
@@ -29,4 +25,4 @@ test('Failsauce', (t) => {
 
   const result = await promise
   t.is(result.length, outputs.length, 'Number of objects uploaded to S3 should match the number of outputs defined in config.')
-})*/
+})
