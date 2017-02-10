@@ -13,7 +13,7 @@
     "lint:eslint": "eslint $npm_package_config_jsSrc",
     "deploy": "npm test && serverless deploy -v",
     "invoke": "serverless invoke --function sharpImage --path ./event.json --log",
-    "postinstall": "cpy config.sample.json config.json && cpy event.sample.json event.json"
+    "postinstall": "if [ ! -f ./config.json ]; then cp ./config.sample.json ./config.json; fi && if [ ! -f ./event.json ]; then cp ./event.sample.json ./event.json; fi"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,6 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-stage-3": "^6.22.0",
     "babel-register": "^6.22.0",
-    "cpy-cli": "1.0.1",
     "decompress": "^4.0.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.1.0",
