@@ -1,6 +1,9 @@
 # Serverless Sharp Image
 [Serverless Framework-based](https://www.github.com/serverless/serverless) AWS Lambda function triggered by S3 events to resize images with the excellent [Sharp](https://github.com/lovell/sharp) module. By using the Sharp module (which uses the libvips library), image processing can be 3x-5x faster than using ImageMagick, thus reducing the time your function spends running, which can potentially dramatically decrease your lambda function's cost. The functions' behaviour can be controlled entirely with configuration.
 
+[![CircleCI](https://circleci.com/gh/adieuadieu/serverless-sharp-image.svg?style=svg&circle-token=f8db227dcdfe996a72e43792df54e67168a2f18e)](https://circleci.com/gh/adieuadieu/serverless-sharp-image)
+
+
 ## Contents
 1. [What is it?](#what-is-it)
 1. [Installation](#installation)
