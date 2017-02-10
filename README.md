@@ -200,7 +200,7 @@ export AWS_CLIENT_TIMEOUT=3000000
 <details>
   <summary>I got this error when installing: `Error: Python executable "/Users/**/miniconda3/bin/python" is v3.5.2, which is not supported by gyp.` What do I do?</summary>
   - Make sure you've got a recent version of `npm` installed.
-  - Make sure you've got a recent version of node-gyp installed. You can do `npm install node-gyp -g` to make sure.
+  - Make sure you've got a recent version of node-gyp installed. You can do `npm install node-gyp -g` to make sure, but try the next steps first without doing this.
   - Set the path to python2 on your system. For example: `npm config set python /usr/bin/python2.7`
   - Having done the above, delete the `node_modules` directory in the project, and reinstall with `yarn install`
 </details>
