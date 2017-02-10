@@ -63,7 +63,6 @@
     "json-loader": "0.5.4",
     "serverless": "^1.6.1",
     "serverless-webpack": "^1.0.0-rc.4",
-    "tap-mocha-reporter": "^3.0.3",
     "tap-xunit": "^1.7.0",
     "webpack": "1.14.0"
   },
