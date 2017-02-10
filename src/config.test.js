@@ -1,6 +1,6 @@
 import test from 'ava'
 import config from './config'
-import { sourceBucket as s3SourceBucket, destinationBucket as s3DestinationBucket, get, upload, remove } from './s3'
+import { get, upload, remove } from './s3'
 
 const {
   sourceBucket,
