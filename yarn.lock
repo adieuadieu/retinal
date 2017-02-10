@@ -1817,6 +1817,12 @@ eslint-plugin-promise@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.4.1.tgz#6911a9010bf84e17d82e19e0ab0f80ab3ad6db4c"
 
+eslint-tap@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-tap/-/eslint-tap-2.0.0.tgz#7f5e8615d19a155e81b03900ac094c7d8a4309b7"
+  dependencies:
+    yamlish "0.0.7"
+
 eslint@^3.15.0:
   version "3.15.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.15.0.tgz#bdcc6a6c5ffe08160e7b93c066695362a91e30f2"
@@ -4786,13 +4792,13 @@ xml2js@0.4.15:
     sax ">=0.6.0"
     xmlbuilder ">=2.4.6"
 
-xmlbuilder@2.6.2, xmlbuilder@>=2.4.6:
+xmlbuilder@2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-2.6.2.tgz#f916f6d10d45dc171b1be2e6e673fb6e0cc35d0a"
   dependencies:
     lodash "~3.5.0"
 
-xmlbuilder@~4.1.0:
+xmlbuilder@>=2.4.6, xmlbuilder@~4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-4.1.0.tgz#687e84d9c4145af8db438d8bec88805df66249f4"
   dependencies:
@@ -4805,6 +4811,10 @@ xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
 yallist@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.0.0.tgz#306c543835f09ee1a4cb23b7bce9ab341c91cdd4"
+
+yamlish@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/yamlish/-/yamlish-0.0.7.tgz#b4af9a1dcc63618873c3d6e451ec3213c39a57fb"
 
 yargs@~1.2.6:
   version "1.2.6"
