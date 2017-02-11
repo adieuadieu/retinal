@@ -6,9 +6,44 @@ provider:
   profile: ${file(config.json):provider.profile}
   stage: ${file(config.json):provider.stage}
   region: ${file(config.json):provider.region}
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action:
+         - "s3:ListBucket"
+         - "s3:GetObject"
+         - "s3:GetObjectAcl"
+       Resource:
+         Fn::Join:
+           - ""
+           -  - "arn:aws:s3:::"
+              - ${file(config.json):sourceBucket}
+              - "/"
+              - ${file(config.json):sourcePrefix}
+              - "*"
+    -  Effect: "Allow"
+       Action:
+         - "s3:ListBucket"
+         - "s3:PutObject"
+         - "s3:DeleteObject"
+         - "s3:GetObjectAcl"
+         - "s3:ListBucketMultipartUploads"
+         - "s3:ListMultipartUploadParts"
+         - "s3:PutObject"
+         - "s3:PutObjectAcl"
+         - "s3:PutObjectTagging"
+         - "s3:PutObjectVersionAcl"
+         - "s3:PutObjectVersionTagging"
+       Resource:
+         Fn::Join:
+           - ""
+           -  - "arn:aws:s3:::"
+              - ${file(config.json):destinationBucket}
+              - "/"
+              - ${file(config.json):destinationPrefix}
+              - "*"
 
 custom:
-  webpackIncludeModules: false # enable auto including modules
+  webpackIncludeModules: false # disable auto including modules
 
 plugins:
   - serverless-webpack
@@ -27,13 +62,6 @@ package:
     - README.md
     - serverless.yml
     - webpack.config.js
-
-
-# you can add packaging information here
-#package:
-#  exclude:
-#    - exclude-me.js
-#  artifact: my-service-code.zip
 
 functions:
   sharpImage:
