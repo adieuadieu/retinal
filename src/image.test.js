@@ -1,10 +1,32 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+import fs from 'fs'
+import path from 'path'
 import test from 'ava'
 import config from './config'
-import event from '../event.json'
 import processItem from './image'
+import { sourceBucket, destinationBucket, upload, remove } from './s3'
 
-const { outputs } = config
+const { sourcePrefix, outputs } = config
+
+const testImage = path.join(__dirname, 'test.jpg')
+const testImageStream = fs.createReadStream(testImage)
+const testKey = [sourcePrefix, 'test.jpg'].join('/')
+
+const event = {
+  Records: [
+    {
+      s3: {
+        object: {
+          key: testKey,
+        },
+      },
+      eventName: 'ObjectCreated:Put',
+    },
+  ],
+}
+
+test.before(() => upload(testImageStream, { Key: testKey }, sourceBucket))
+
+test.after.always(() => remove([testKey], sourceBucket))
 
 test('processItem()', async (t) => {
   try {
@@ -25,5 +47,9 @@ test('processItem()', async (t) => {
   t.notThrows(promise)
 
   const result = await promise
+
   t.is(result.length, outputs.length, 'Number of objects uploaded to S3 should match the number of outputs defined in config.')
+
+  // Teardown. Remove the resized images from the S3 bucket.
+  await remove(result.map(({ Key }) => Key), destinationBucket)
 })

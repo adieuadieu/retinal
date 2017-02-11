@@ -1,24 +1,24 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
+import path from 'path'
 import test from 'ava'
 import sharp from 'sharp'
 import sharpify from './sharp'
 
-const testImage = './test.jpg'
+const testImage = path.join(__dirname, 'test.jpg')
 
 const options = {
   all: [
-    ['toFormat', 'webp'],
+    ['toFormat', 'webp', { quality: 80 }],
     ['rotate', 90],
   ],
   outputs: [
     {
       operations: [
-        ['resize', 100, 100],
+        ['resize', 100, 200],
       ],
     },
     {
       operations: [
-        ['resize', 200, 200],
+        ['resize', 200, 100],
       ],
     },
   ],

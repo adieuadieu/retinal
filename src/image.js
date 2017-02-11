@@ -21,9 +21,8 @@ export default async function processItem ({ eventName, s3: { object: { key } } 
   const context = { key, type }
 
   return Promise.all(
-    streams.map(async (stream, index) =>
-      await upload(stream, { ...outputs[index].params, Key: makeKey(outputs[index].key, context) })
+    streams.map((stream, index) =>
+      upload(stream, { ...outputs[index].params, Key: makeKey(outputs[index].key, context) })
     )
   )
 }
-

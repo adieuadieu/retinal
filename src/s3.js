@@ -3,46 +3,38 @@ import config from './config'
 
 const defaultParams = (config.s3 && config.s3.params) || {}
 
-const sourceBucket = new AWS.S3({
+export const sourceBucket = new AWS.S3({
   params: { Bucket: config.sourceBucket },
 })
 
-const destinationBucket = new AWS.S3({
+export const destinationBucket = new AWS.S3({
   params: { Bucket: config.destinationBucket },
 })
 
-export async function get (params = {}) {
+export function get (params = {}, bucket = sourceBucket) {
   const s3Params = {
     ...params,
   }
 
-  return await sourceBucket.getObject(s3Params).promise()
+  return bucket.getObject(s3Params).promise()
 }
 
-export async function upload (data, params = {}) {
+export function upload (data, params = {}, bucket = destinationBucket) {
   const s3Params = {
     ...defaultParams,
     ...params,
     Body: data,
   }
 
-  return await new Promise((resolve, reject) => {
-    destinationBucket.upload(s3Params, (error, response) => {
-      if (error) {
-        return reject(error)
-      }
-
-      return resolve(response)
-    })
-  })
+  return bucket.upload(s3Params).promise()
 }
 
-export async function remove (objects) {
+export function remove (objects, bucket = destinationBucket) {
   const s3Params = {
     Delete: {
       Objects: objects.map(object => ({ Key: object })),
     },
   }
 
-  return await destinationBucket.deleteObjects(s3Params).promise()
+  return bucket.deleteObjects(s3Params).promise()
 }
