@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path')
 const decompress = require('decompress')
 const webpack = require('webpack')
@@ -41,7 +40,6 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({ minimize: true, sourceMap: false, warnings: false }),
     new ExtractTarballPlugin(
       path.join(__dirname, 'lib/sharp-0.17.1-linux-x64.tar.gz'),
-      // path.join(__dirname, 'lib/poop.tar.gz'),
       path.join(__dirname, '.webpack/')
     ),
   ],

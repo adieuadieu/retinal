@@ -1,10 +1,10 @@
 # Serverless Sharp Image
 
-[Serverless Framework-based](https://www.github.com/serverless/serverless) AWS Lambda function triggered by S3 events to resize images with the excellent [Sharp](https://github.com/lovell/sharp) module. By using the Sharp module (which uses the libvips library), image processing can be 3x-5x faster than using ImageMagick, thus reducing the time your function spends running, which can potentially dramatically decrease your lambda function's cost. The functions' behaviour can be controlled entirely with configuration.
+[Serverless Framework-based](https://www.github.com/serverless/serverless) AWS Lambda function triggered by S3 events to resize images with the excellent [Sharp](https://github.com/lovell/sharp) module. By using the Sharp module (which uses the libvips library), image processing can be 3x-5x faster than using ImageMagick, thus reducing the time your function spends running, which can potentially dramatically decrease your lambda function's cost. The function's behaviour can be controlled entirely with configuration.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/adieuadieu/serverless-sharp-image/master.svg?style=flat-square)](https://circleci.com/gh/adieuadieu/serverless-sharp-image)
 [![Coveralls](https://img.shields.io/coveralls/adieuadieu/serverless-sharp-image/master.svg?style=flat-square)](https://coveralls.io/github/adieuadieu/serverless-sharp-image)
-[![Codacy grade](https://img.shields.io/codacy/grade/cd743cc370104d49a508cc4b7689c1aa.svg?style=flat-square)]()
+[![Codacy grade](https://img.shields.io/codacy/grade/cd743cc370104d49a508cc4b7689c1aa.svg?style=flat-square)](https://www.codacy.com/app/adieuadieu/serverless-sharp-image)
 [![David](https://img.shields.io/david/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
 [![David](https://img.shields.io/david/dev/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
 
