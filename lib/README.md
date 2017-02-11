@@ -4,7 +4,7 @@
 
 We dereference the symlinks when creating the tarball, which means a copy of many linux .so binaries are included in the tarball. We do this because, without the dereference, the symlinks would not be valid on MacOS or Windows systems causing the Serverless packaging step to fail.
 
-To create the Lambda compatible archive, create an AWS EC2 instance using the Amazon Linux AMI on which Lambda is based (currently AMI amzn-ami-hvm-2016.03.3.x86_64-gp2). Set up the instance with all the necessary prerequisite dependencies and clone the repository:
+To create the Lambda compatible archive, create an AWS EC2 instance using the Amazon Linux AMI on which Lambda is based (currently AMI amzn-ami-hvm-2016.03.3.x86_64-gp2). Set up the instance with all the necessary prerequisite dependencies:
 
 ```bash
 sudo yum install -y gcc-c++ make
@@ -14,7 +14,7 @@ sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 sudo yum install -y yarn
 ```
 
-To create the sharp tarball:
+To create the Sharp tarball:
 
 ```bash
 export SHARP_VERSION=0.17.1
