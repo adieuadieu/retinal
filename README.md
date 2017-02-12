@@ -192,7 +192,7 @@ Note that method's are performed in order they appear in the configuration, and 
 
 <details id="EMTBwg">
   <summary>How can I use an existing bucket for my original images and processed output images?</summary>
-  By default, Serverless tries to provision all the necessary resources required by the lambda function by creating a stack in AWS CloudFormation. To use existing buckets, simply remove the entire `resources` section from the `serverless.yml` file. Alternatively, if you'd like to use an existing bucket for the original image, but have a new processed-images output bucket created, only remove the `imageSourceBucket` section from the `resources` section in `serverless.yml`.
+  By default, Serverless tries to provision all the necessary resources required by the lambda function by creating a stack in AWS CloudFormation. To use existing buckets, first remove the `s3` event section from the `serverless.yml` configuration file in the `functions.sharpImage.events` configuration, then remove the entire `resources` section from the `serverless.yml` file. Alternatively, if you'd like to use an existing bucket for the original image, but have a new processed-images output bucket created, only remove the s3 event section in `serverless.yml`.
 </details>
 
 <details id="ZtsBwg">
@@ -223,8 +223,8 @@ export AWS_CLIENT_TIMEOUT=3000000
 </details>
 
 <details id="x3CH5Q">
-  <summary>I got this error when deploying: `An error occurred while provisioning your stack: imageSourceBucket`</summary>
-  This means that the S3 bucket you configured for the `sourceBucket` (where original images are uploaded) already exists in S3. To use an existing `imageSourceBucket` simply remove the `imageSourceBucket` section from the `resources` list in `serverless.yml`. See also [this question](#EMTBwg).
+  <summary>I got this error when deploying: `An error occurred while provisioning your stack: imageDestinationBucket`</summary>
+  This means that the S3 bucket you configured for the `destinationBucket` (where processed images are uploaded) already exists in S3. To use an existing `imageDestinationBucket` simply remove the `imageDestinationBucket` section from the `resources` list in `serverless.yml`. See also [this question](#EMTBwg).
 </details>
 
 <details id="5It9SQ">
