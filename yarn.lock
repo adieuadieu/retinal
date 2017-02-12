@@ -349,23 +349,9 @@ ava@^0.18.1:
     unique-temp-dir "^1.0.0"
     update-notifier "^1.0.0"
 
-aws-sdk@^2.12.0:
+aws-sdk@^2.12.0, aws-sdk@^2.7.13:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.12.0.tgz#f9ae9f11d458764604ccb4a80e34e3c07a6d7d1b"
-  dependencies:
-    buffer "4.9.1"
-    crypto-browserify "1.0.9"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.1.5"
-    url "0.10.3"
-    uuid "3.0.0"
-    xml2js "0.4.15"
-    xmlbuilder "2.6.2"
-
-aws-sdk@^2.7.13:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.11.0.tgz#4dfc8c9678e42d1574bb04ebf0408fc9c1f8f302"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -3362,9 +3348,13 @@ mute-stream@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.5.tgz#8fbfabb0a98a253d3184331f9e8deb7372fac6c0"
 
-nan@^2.3.0, nan@^2.5.0:
+nan@^2.3.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.5.0.tgz#aa8f1e34531d807e9e27755b234b4a6ec0c152a8"
+
+nan@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.5.1.tgz#d5b01691253326a97a2bbee9e61c55d8d60351e2"
 
 native-promise-only@^0.8.1:
   version "0.8.1"
@@ -4313,14 +4303,14 @@ sha.js@2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.2.6.tgz#17ddeddc5f722fb66501658895461977867315ba"
 
-sharp@^0.17.1:
-  version "0.17.1"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.17.1.tgz#aeb8ab921691b016a00f042d61f152144cd20f9d"
+sharp@^0.17.2:
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.17.2.tgz#3e5e02c27de10a65927b009d29f2f61920d51f81"
   dependencies:
     caw "^2.0.0"
     color "^1.0.3"
     got "^6.7.1"
-    nan "^2.5.0"
+    nan "^2.5.1"
     semver "^5.3.0"
     tar "^2.2.1"
 
