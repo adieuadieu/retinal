@@ -3,7 +3,7 @@ import test from 'ava'
 import sharp from 'sharp'
 import sharpify from './sharp'
 
-const testImage = path.join(__dirname, 'test.jpg')
+const testImage = path.join(__dirname, 'test image.jpg')
 
 const options = {
   all: [

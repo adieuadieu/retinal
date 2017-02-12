@@ -7,9 +7,9 @@ import { sourceBucket, destinationBucket, upload, remove } from './s3'
 
 const { sourcePrefix, outputs } = config
 
-const testImage = path.join(__dirname, 'test.jpg')
+const testImage = path.join(__dirname, 'test image.jpg')
 const testImageStream = fs.createReadStream(testImage)
-const testKey = [sourcePrefix, 'test.jpg'].join('/')
+const testKey = [sourcePrefix, 'test image ütf テスト.jpg'].join('')
 
 const event = {
   Records: [
