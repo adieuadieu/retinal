@@ -1,11 +1,12 @@
 import config from './config'
 import { get, upload } from './s3'
 import sharpify from './sharp'
-import { makeKey } from './utils'
+import { makeKey, decodeS3EventKey } from './utils'
 
 const { outputs } = config
 
-export default async function processItem ({ eventName, s3: { object: { key } } = { object: { key: false } } }) {
+export default async function processItem ({ eventName, s3: { object: { key: undecodedKey } } = { object: { key: false } } }) {
+  const key = decodeS3EventKey(undecodedKey)
   console.log('Processing: ', key)
 
   if (eventName.split(':')[0] !== 'ObjectCreated') {

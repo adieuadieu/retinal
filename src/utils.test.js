@@ -1,6 +1,6 @@
 import test from 'ava'
 import config from './config'
-import { makeKey } from './utils'
+import { makeKey, decodeS3EventKey } from './utils'
 
 const { destinationPrefix } = config
 
@@ -12,4 +12,12 @@ test('makeKey()', (t) => {
   const key = makeKey(template, context)
 
   t.is(key, expected)
+})
+
+test('decodeS3EventKey()', (t) => {
+  const undecoded = 'incoming/test+image+%C3%BCtf+%E3%83%86%E3%82%B9%E3%83%88.jpg'
+  const expected = 'incoming/test image ütf テスト.jpg'
+  const decoded = decodeS3EventKey(undecoded)
+
+  t.is(decoded, expected)
 })
