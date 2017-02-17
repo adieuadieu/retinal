@@ -349,9 +349,9 @@ ava@^0.18.1:
     unique-temp-dir "^1.0.0"
     update-notifier "^1.0.0"
 
-aws-sdk@^2.14.0:
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.14.0.tgz#5a9c440d85ac1e5b988b56e4a0e8b55a18a6c4ed"
+aws-sdk@^2.15.0:
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.15.0.tgz#dca391a793210d4b062b5f1f5d6bb25bc4d4ba5c"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -1877,9 +1877,9 @@ eslint-plugin-import@2.2.0:
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
 
-eslint-plugin-promise@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.4.1.tgz#6911a9010bf84e17d82e19e0ab0f80ab3ad6db4c"
+eslint-plugin-promise@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.4.2.tgz#1be2793eafe2d18b5b123b8136c269f804fe7122"
 
 eslint-tap@^2.0.0:
   version "2.0.0"
