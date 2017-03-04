@@ -350,7 +350,21 @@ ava@^0.18.2:
     unique-temp-dir "^1.0.0"
     update-notifier "^1.0.0"
 
-aws-sdk@^2.16.0, aws-sdk@^2.7.13:
+aws-sdk@^2.22.0:
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.22.0.tgz#f7b67d5ece7e67c36f9d3d55e137872572e5c998"
+  dependencies:
+    buffer "4.9.1"
+    crypto-browserify "1.0.9"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.1.5"
+    url "0.10.3"
+    uuid "3.0.0"
+    xml2js "0.4.15"
+    xmlbuilder "2.6.2"
+
+aws-sdk@^2.7.13:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.16.0.tgz#c3bf4cac031b5af0db2a0f03e75f59a70ace8ff4"
   dependencies:
@@ -1817,9 +1831,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-airbnb-base@^11.1.0:
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-11.1.0.tgz#dc9b3ec70b8c74dcbe6d6257c9da3992c39ca2ca"
+eslint-config-airbnb-base@^11.1.1:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-11.1.1.tgz#61e9e89e4eb89f474f6913ac817be9fbb59063e0"
 
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
@@ -1864,9 +1878,9 @@ eslint-plugin-import@2.2.0:
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
 
-eslint-plugin-promise@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.4.2.tgz#1be2793eafe2d18b5b123b8136c269f804fe7122"
+eslint-plugin-promise@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.5.0.tgz#78fbb6ffe047201627569e85a6c5373af2a68fca"
 
 eslint-tap@^2.0.0:
   version "2.0.0"
@@ -1874,9 +1888,9 @@ eslint-tap@^2.0.0:
   dependencies:
     yamlish "0.0.7"
 
-eslint@^3.16.0:
-  version "3.16.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.16.0.tgz#4a468ab93618a9eb6e3f1499038b38851f828630"
+eslint@^3.17.0:
+  version "3.17.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.17.0.tgz#e2704b09c5bae9fb49ee8bafeea3832c7257d498"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -4253,9 +4267,9 @@ serverless-webpack@^1.0.0-rc.4:
     npm-programmatic "0.0.5"
     webpack "^1.13.1"
 
-serverless@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.7.0.tgz#87c19636c054978e29b8c32ac7440f8cfee70833"
+serverless@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.8.0.tgz#af113fed3579177e79b155e16658187dd8b23447"
   dependencies:
     archiver "^1.1.0"
     async "^1.5.2"
