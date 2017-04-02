@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Serverless-based Lambda function to resize images based on S3 events with the awesome Sharp library",
   "main": "handler.js",
+  "engines": {
+    "node": ">= 6.10.0"
+  },
   "config": {
     "jsSrc": "src/"
   },
