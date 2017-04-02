@@ -2,7 +2,7 @@ import sharp from 'sharp'
 
 const options = { all: [], outputs: [] }
 
-export default async function sharpify (input, { all, outputs } = options, toBuffer = false) {
+export default (async function sharpify (input, { all, outputs } = options, toBuffer = false) {
   const image = sharp(input)
 
   /* preOperations are performed on the input image and shared across all the outputs */
@@ -15,6 +15,6 @@ export default async function sharpify (input, { all, outputs } = options, toBuf
 
       operations.forEach(([func, ...parameters]) => clone[func](...parameters))
       return toBuffer ? clone.toBuffer() : clone
-    })
+    }),
   )
-}
+});

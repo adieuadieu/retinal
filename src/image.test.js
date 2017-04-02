@@ -48,7 +48,11 @@ test('processItem()', async (t) => {
 
   const result = await promise
 
-  t.is(result.length, outputs.length, 'Number of objects uploaded to S3 should match the number of outputs defined in config.')
+  t.is(
+    result.length,
+    outputs.length,
+    'Number of objects uploaded to S3 should match the number of outputs defined in config.',
+  )
 
   // Teardown. Remove the resized images from the S3 bucket.
   await remove(result.map(({ Key }) => Key), destinationBucket)
