@@ -9,9 +9,12 @@ test('makeKey()', (t) => {
   const context = { key: 'test1/test2/test3/fancy.png', type: 'image/jpeg' }
   const expected = `${destinationPrefix}magical/unicorns/test1/test2/test3/test2/fancy.jpeg`
 
-  const key = makeKey(template, context)
-
-  t.is(key, expected)
+  t.is(makeKey(template, context), expected)
+  t.throws(
+    () => makeKey(undefined, undefined),
+    Error,
+    'It should throw an Error if neither template or context are provided.',
+  )
 })
 
 test('decodeS3EventKey()', (t) => {
@@ -20,4 +23,5 @@ test('decodeS3EventKey()', (t) => {
   const decoded = decodeS3EventKey(undecoded)
 
   t.is(decoded, expected)
+  t.notThrows(() => decodeS3EventKey(undefined), 'decoding empty string should not throw')
 })

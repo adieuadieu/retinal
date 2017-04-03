@@ -2,7 +2,7 @@ service: ${file(config.json):name}
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   profile: ${file(config.json):provider.profile}
   stage: ${file(config.json):provider.stage}
   region: ${file(config.json):provider.region}

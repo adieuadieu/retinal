@@ -4,7 +4,11 @@ import config from './config'
 
 const { destinationPrefix } = config
 
-export function makeKey (template = '%(key)', context = {}) {
+export function makeKey (template, context) {
+  if (!template || !context) {
+    throw new Error('makeKey requires both a template string and a context')
+  }
+
   const crumbs = context.key.split('/')
   const directory = crumbs.slice(0, crumbs.length - 1).join('/')
   const filename = crumbs[crumbs.length - 1].split('.')[0]
@@ -19,6 +23,6 @@ export function makeKey (template = '%(key)', context = {}) {
   return `${destinationPrefix}${sprintf(template, values)}`
 }
 
-export function decodeS3EventKey (key = '') {
-  return decodeURIComponent(key.replace(/\+/g, ' '))
+export function decodeS3EventKey (key) {
+  return key && key.length ? decodeURIComponent(key.replace(/\+/g, ' ')) : key
 }

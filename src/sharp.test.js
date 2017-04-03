@@ -6,20 +6,13 @@ import sharpify from './sharp'
 const testImage = path.join(__dirname, 'test image.jpg')
 
 const options = {
-  all: [
-    ['toFormat', 'webp', { quality: 80 }],
-    ['rotate', 90],
-  ],
+  all: [['toFormat', 'webp', { quality: 80 }], ['rotate', 90]],
   outputs: [
     {
-      operations: [
-        ['resize', 100, 200],
-      ],
+      operations: [['resize', 100, 200]],
     },
     {
-      operations: [
-        ['resize', 200, 100],
-      ],
+      operations: [['resize', 200, 100]],
     },
   ],
 }
@@ -27,17 +20,31 @@ const options = {
 const { all, outputs } = options
 
 test('process input image based on configuration options', async (t) => {
-  const images = await sharpify(testImage, options, true)
+  t.notThrows(async () => {
+    await sharpify(undefined, undefined, undefined)
+  })
 
-  t.is(images.length, outputs.length, 'number of images should match the number of defined outputs')
+  const imageStreams = await sharpify(testImage, options, false)
+  const imageBuffers = await sharpify(testImage, options, true)
 
-  await Promise.all(images.map(async (image, index) => {
-    const { operations } = outputs[index]
-    const { width, height, format } = await sharp(image).metadata()
+  t.true(imageStreams[0] instanceof sharp)
+  t.true(imageBuffers[0] instanceof Buffer)
 
-    t.is(width, operations[0][1], 'image width should match height of defined output')
-    t.is(height, operations[0][2], 'image height should match width of defined output')
+  t.is(
+    imageBuffers.length,
+    outputs.length,
+    'number of images should match the number of defined outputs',
+  )
 
-    t.is(format, all[0][1], 'image format should match format defined for all images')
-  }))
+  await Promise.all(
+    imageBuffers.map(async (image, index) => {
+      const { operations } = outputs[index]
+      const { width, height, format } = await sharp(image).metadata()
+
+      t.is(width, operations[0][1], 'image width should match height of defined output')
+      t.is(height, operations[0][2], 'image height should match width of defined output')
+
+      t.is(format, all[0][1], 'image format should match format defined for all images')
+    }),
+  )
 })

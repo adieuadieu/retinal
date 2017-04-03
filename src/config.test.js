@@ -43,7 +43,10 @@ test('each output must have an S3 object key defined', (t) => {
 })
 
 test('should be able to read from the configured S3 source bucket', async (t) => {
-  const key = [sourcePrefix, 'totally-fake-made-up-test-key-that-most-likely-does-not-exist.test'].join('/')
+  const key = [
+    sourcePrefix,
+    'totally-fake-made-up-test-key-that-most-likely-does-not-exist.test',
+  ].join('/')
   const promise = get({ Key: key })
 
   const result = await t.throws(promise, 'The specified key does not exist.')
@@ -52,7 +55,10 @@ test('should be able to read from the configured S3 source bucket', async (t) =>
 })
 
 test('should be able to write to the configured S3 destination bucket', async (t) => {
-  const key = [destinationPrefix, 'totally-fake-made-up-test-key-that-most-likely-does-not-exist.test'].join('')
+  const key = [
+    destinationPrefix,
+    'totally-fake-made-up-test-key-that-most-likely-does-not-exist.test',
+  ].join('')
   const promise = upload('test', { Key: key })
 
   await t.notThrows(promise)
