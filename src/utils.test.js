@@ -20,4 +20,5 @@ test('decodeS3EventKey()', (t) => {
   const decoded = decodeS3EventKey(undecoded)
 
   t.is(decoded, expected)
+  t.notThrows(() => decodeS3EventKey(undefined), 'decoding empty string should not throw')
 })

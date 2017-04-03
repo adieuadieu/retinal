@@ -29,19 +29,17 @@ test.before(() => upload(testImageStream, { Key: testKey }, sourceBucket))
 test.after.always(() => remove([testKey], sourceBucket))
 
 test('processItem()', async (t) => {
-  try {
-    await processItem({ eventName: 'fake-event' })
-    t.fail('Should throw error when event name is invalid.')
-  } catch (error) {
-    t.pass()
-  }
+  await t.throws(
+    processItem({ ...event.Records[0], eventName: 'fake-event' }),
+    Error,
+    'It should throw an Error when not provided with a valid eventName',
+  )
 
-  try {
-    await processItem({ eventName: 'ObjectCreated' })
-    t.fail('Should throw error when S3 object key is missing.')
-  } catch (error) {
-    t.pass()
-  }
+  await t.throws(
+    processItem({ eventName: 'ObjectCreated' }),
+    Error,
+    'It should throw error when S3 object key is missing.',
+  )
 
   const promise = processItem(event.Records[0])
   t.notThrows(promise)

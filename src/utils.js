@@ -19,6 +19,6 @@ export function makeKey (template = '%(key)', context = {}) {
   return `${destinationPrefix}${sprintf(template, values)}`
 }
 
-export function decodeS3EventKey (key = '') {
-  return decodeURIComponent(key.replace(/\+/g, ' '))
+export function decodeS3EventKey (key) {
+  return key && key.length ? decodeURIComponent(key.replace(/\+/g, ' ')) : key
 }
