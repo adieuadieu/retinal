@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/adieuadieu/serverless-sharp-image",
   "dependencies": {
-    "aws-sdk": "^2.66.0",
+    "aws-sdk": "^2.67.0",
     "babel-runtime": "^6.23.0",
     "mime-types": "^2.1.15",
     "sharp": "^0.18.1",
@@ -66,7 +66,7 @@
     "fs-extra": "^3.0.1",
     "json-loader": "0.5.4",
     "nyc": "^11.0.2",
-    "serverless": "^1.15.1",
+    "serverless": "^1.15.2",
     "serverless-webpack": "^1.0.0-rc.4",
     "tap-xunit": "^1.7.0",
     "webpack": "1.14.0"
