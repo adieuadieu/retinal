@@ -9,7 +9,7 @@ const options = {
   all: [['toFormat', 'webp', { quality: 80 }], ['rotate', 90]],
   outputs: [
     {
-      operations: [['resize', 100, 200]],
+      operations: [['resize', 100, 201]],
     },
     {
       operations: [['resize', 200, 100]],
