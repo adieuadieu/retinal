@@ -15,6 +15,7 @@
 1. [Testing](#testing)
 1. [Deployment](#deployment)
 1. [Configuration](#configuration)
+1. [Building](#building)
 1. [Troubleshooting](#troubleshooting)
 
 
@@ -186,6 +187,17 @@ Note that method's are performed in order they appear in the configuration, and 
   *Example*:  
   - Given Content-Type: `image/png`  
     `%(extension)s` - "png"  
+
+
+## Building
+
+Although not necessary (it's pre-packaged/included), if you'd like, you can build the [sharp](https://github.com/lovell/sharp) module native binaries for Lambda yourself with:
+
+```bash
+yarn build:sharp
+```
+
+This requires that you have [Docker](https://www.docker.com/) installed and running. More info [here](https://github.com/adieuadieu/serverless-sharp-image/tree/master/lambda-sharp).
 
 
 ## Troubleshooting

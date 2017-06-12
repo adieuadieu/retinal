@@ -17,7 +17,8 @@
     "coverage": "nyc report",
     "deploy": "npm test && serverless deploy -v",
     "invoke": "serverless invoke --function sharpImage --path ./event.json --log",
-    "postinstall": "if [ ! -f ./config.json ]; then cp ./config.sample.json ./config.json; fi && if [ ! -f ./event.json ]; then cp ./event.sample.json ./event.json; fi"
+    "postinstall": "if [ ! -f ./config.json ]; then cp ./config.sample.json ./config.json; fi && if [ ! -f ./event.json ]; then cp ./event.sample.json ./event.json; fi",
+    "build:sharp": "docker build -t serverless-sharp-image lambda-sharp && docker run -v \"$PWD/lambda-sharp\":/var/task serverless-sharp-image"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "aws-sdk": "^2.67.0",
     "babel-runtime": "^6.23.0",
     "mime-types": "^2.1.15",
+    "prettier": "^1.4.4",
     "sharp": "^0.18.1",
     "sprintf-js": "^1.1.1"
   },
@@ -85,7 +87,7 @@
         "env",
         {
           "targets": {
-            "node": 6.1
+            "node": "6.10"
           }
         }
       ],
