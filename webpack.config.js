@@ -2,7 +2,11 @@ const path = require('path')
 const decompress = require('decompress')
 const webpack = require('webpack')
 
-const sharpTarball = path.join(__dirname, 'lib/sharp-0.17.3-aws-linux-x64-node-6.10.1.tar.gz')
+const SHARP_VERSION = '0.18.1'
+const sharpTarball = path.join(
+  __dirname,
+  `lambda-sharp/tarballs/sharp-${SHARP_VERSION}-aws-lambda-linux-x64-node-6.10.1.tar.gz`
+)
 const webpackDir = path.join(__dirname, '.webpack/')
 
 function ExtractTarballPlugin (archive, to) {
