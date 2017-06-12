@@ -20,9 +20,7 @@ const options = {
 const { all, outputs } = options
 
 test('process input image based on configuration options', async (t) => {
-  t.notThrows(async () => {
-    await sharpify(undefined, undefined, undefined)
-  })
+  t.throws(sharpify(undefined, undefined, undefined), TypeError)
 
   const imageStreams = await sharpify(testImage, options, false)
   const imageBuffers = await sharpify(testImage, options, true)
@@ -33,7 +31,7 @@ test('process input image based on configuration options', async (t) => {
   t.is(
     imageBuffers.length,
     outputs.length,
-    'number of images should match the number of defined outputs',
+    'number of images should match the number of defined outputs'
   )
 
   await Promise.all(
@@ -45,6 +43,6 @@ test('process input image based on configuration options', async (t) => {
       t.is(height, operations[0][2], 'image height should match width of defined output')
 
       t.is(format, all[0][1], 'image format should match format defined for all images')
-    }),
+    })
   )
 })

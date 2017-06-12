@@ -42,6 +42,7 @@
     "aws-sdk": "^2.67.0",
     "babel-runtime": "^6.23.0",
     "mime-types": "^2.1.15",
+    "prettier": "^1.4.4",
     "sharp": "^0.18.1",
     "sprintf-js": "^1.1.1"
   },
