@@ -8,6 +8,7 @@
 [![David](https://img.shields.io/david/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
 [![David](https://img.shields.io/david/dev/adieuadieu/serverless-sharp-image.svg?style=flat-square)]()
 
+
 ## Contents
 1. [What is it?](#what-is-it)
 1. [Installation](#installation)
@@ -17,6 +18,7 @@
 1. [Configuration](#configuration)
 1. [Building](#building)
 1. [Troubleshooting](#troubleshooting)
+1. [Change log](#change-log)
 
 
 ## What is it?
@@ -243,3 +245,8 @@ export AWS_CLIENT_TIMEOUT=3000000
   <summary>Aaaaaarggghhhhhh!!!</summary>
   Uuurrrggghhhhhh! Have you tried [filing an Issue](https://github.com/adieuadieu/serverless-sharp-image/issues/new)?
 </details>
+
+
+## Change log
+
+See the [CHANGELOG](https://github.com/adieuadieu/serverless-sharp-image/blob/master/CHANGELOG.md)
