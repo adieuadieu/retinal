@@ -1,6 +1,6 @@
 {
   "name": "serverless-sharp-image",
-  "version": "0.0.1",
+  "version": "0.10.0",
   "description": "Serverless-based Lambda function to resize images based on S3 events with the awesome Sharp library",
   "main": "handler.js",
   "engines": {

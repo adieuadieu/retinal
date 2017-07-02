@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 
-## [0.9.1] - 2017-07-02
+## [0.10.0] - 2017-07-02
 ### Added
 - added this CHANGELOG from @adieuadieu
 - added new prebuilt sharp@0.18.2 binary for Lambda
