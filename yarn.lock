@@ -411,9 +411,23 @@ ava@^0.20.0:
     unique-temp-dir "^1.0.0"
     update-notifier "^2.1.0"
 
-aws-sdk@^2.7.13, aws-sdk@^2.80.0:
+aws-sdk@^2.7.13:
   version "2.80.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.80.0.tgz#61ced747eb981609483aec53e8d654d3cc9d1435"
+  dependencies:
+    buffer "4.9.1"
+    crypto-browserify "1.0.9"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.0.1"
+    xml2js "0.4.17"
+    xmlbuilder "4.2.1"
+
+aws-sdk@^2.82.0:
+  version "2.82.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.82.0.tgz#a94cfe90c15ee0e403f00f0665dccb98aa93e1f8"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -866,9 +880,9 @@ babel-polyfill@^6.23.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
-babel-preset-env@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.5.2.tgz#cd4ae90a6e94b709f97374b33e5f8b983556adef"
+babel-preset-env@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-env/-/babel-preset-env-1.6.0.tgz#2de1c782a780a0a5d605d199c957596da43c44e4"
   dependencies:
     babel-plugin-check-es2015-constants "^6.22.0"
     babel-plugin-syntax-trailing-function-commas "^6.22.0"
@@ -1854,7 +1868,7 @@ eslint-import-resolver-node@^0.3.1:
     debug "^2.6.8"
     resolve "^1.2.0"
 
-eslint-module-utils@^2.0.0:
+eslint-module-utils@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.1.1.tgz#abaec824177613b8a95b299639e1b6facf473449"
   dependencies:
@@ -1874,16 +1888,16 @@ eslint-plugin-ava@^4.2.1:
     multimatch "^2.1.0"
     pkg-up "^2.0.0"
 
-eslint-plugin-import@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.6.1.tgz#f580be62bb809421d46e338372764afcc9f59bf6"
+eslint-plugin-import@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.7.0.tgz#21de33380b9efb55f5ef6d2e210ec0e07e7fa69f"
   dependencies:
     builtin-modules "^1.1.1"
     contains-path "^0.1.0"
     debug "^2.6.8"
     doctrine "1.5.0"
     eslint-import-resolver-node "^0.3.1"
-    eslint-module-utils "^2.0.0"
+    eslint-module-utils "^2.1.1"
     has "^1.0.1"
     lodash.cond "^4.3.0"
     minimatch "^3.0.3"
@@ -4546,9 +4560,9 @@ serverless-webpack@^1.0.0-rc.4:
     npm-programmatic "0.0.5"
     webpack "^1.13.1"
 
-serverless@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.16.1.tgz#070d2638890c5418bea74ce6e9fcaa09ebe8dc38"
+serverless@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.17.0.tgz#7a221d93c2f50511c94fa89631384bf34efa46b1"
   dependencies:
     apollo-client "^1.4.2"
     archiver "^1.1.0"
