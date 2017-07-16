@@ -1,6 +1,5 @@
 const path = require('path')
 const decompress = require('decompress')
-const webpack = require('webpack')
 
 const SHARP_VERSION = '0.18.2'
 const sharpTarball = path.join(
@@ -25,26 +24,23 @@ module.exports = {
   entry: './src/handler',
   target: 'node',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         include: __dirname,
         exclude: /node_modules/,
+        options: {
+          presets: ['env'],
+        },
       },
-      { test: /\.json$/, loader: 'json-loader' },
     ],
   },
   output: {
     libraryTarget: 'commonjs',
-    path: '.webpack',
+    path: path.resolve(__dirname, '.webpack'),
     filename: 'handler.js', // this should match the first part of function handler in serverless.yml
   },
   externals: ['sharp', 'aws-sdk'],
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    // new webpack.optimize.UglifyJsPlugin({ minimize: true, sourceMap: false, warnings: false }),
-    new ExtractTarballPlugin(sharpTarball, webpackDir),
-  ],
+  plugins: [new ExtractTarballPlugin(sharpTarball, webpackDir)],
 }

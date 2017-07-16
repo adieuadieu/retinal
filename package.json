@@ -13,7 +13,8 @@
     "test": "npm run lint && nyc ava",
     "watch:test": "ava --watch",
     "lint": "npm run lint:eslint -s",
-    "lint:eslint": "eslint $npm_package_config_jsSrc",
+    "lint:eslint": "eslint --ext .js .",
+    "format": "prettier-eslint *.js src/**/*.js",
     "coverage": "nyc report",
     "deploy": "npm test && serverless deploy -v",
     "invoke": "serverless invoke --function sharpImage --path ./event.json --log",
@@ -24,14 +25,7 @@
     "type": "git",
     "url": "https://github.com/adieuadieu/serverless-sharp-image.git"
   },
-  "keywords": [
-    "serverless",
-    "sharp",
-    "libvips",
-    "image",
-    "resize",
-    "optimize"
-  ],
+  "keywords": ["serverless", "sharp", "libvips", "image", "resize", "optimize"],
   "author": "Marco Lüthy",
   "license": "MIT",
   "bugs": {
@@ -66,8 +60,10 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-tap": "^2.0.1",
     "fs-extra": "^4.0.0",
+    "lint-staged": "^4.0.1",
     "nyc": "^11.0.3",
     "prettier-eslint": "^6.4.2",
+    "prettier-eslint-cli": "^4.1.1",
     "serverless": "^1.17.0",
     "serverless-webpack": "^2.0.0",
     "tap-xunit": "^1.7.0",
@@ -79,9 +75,7 @@
   },
   "babel": {
     "sourceMaps": "inline",
-    "plugins": [
-      "transform-runtime"
-    ],
+    "plugins": ["transform-runtime"],
     "presets": [
       [
         "env",
@@ -96,38 +90,22 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "plugins": [
-      "ava",
-      "import"
-    ],
-    "extends": [
-      "airbnb-base",
-      "plugin:ava/recommended"
-    ],
+    "plugins": ["ava", "import"],
+    "extends": ["airbnb-base", "plugin:ava/recommended"],
     "settings": {
       "import/parser": "babel-eslint",
       "import/resolve": {
-        "moduleDirectory": [
-          "node_modules",
-          "src",
-          "./"
-        ]
+        "moduleDirectory": ["node_modules", "src", "./"]
       }
     },
     "rules": {
       "no-console": 0,
-      "semi": [
-        "error",
-        "never"
-      ],
-      "comma-dangle": [
-        "error",
-        "always-multiline"
-      ],
-      "space-before-function-paren": [
-        "error",
-        "always"
-      ]
+      "semi": ["error", "never"],
+      "comma-dangle": ["error", "always-multiline"],
+      "space-before-function-paren": ["error", "always"]
     }
+  },
+  "lint-staged": {
+    "*.{js,ts}": ["npm run format", "git add"]
   }
 }
