@@ -42,7 +42,7 @@ Or, if you have `serverless` installed globally:
 serverless install -u https://github.com/adieuadieu/serverless-sharp-image
 ```
 
-Then, modify the `config.json` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration).
+Then, modify the `config.js` and `event.json` files, adapting them to your needs. More on configuration [below](#configuration).
 
 
 ## Setup
@@ -67,7 +67,7 @@ export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
 
 ## Testing
 
-Make sure the bucket in `config.json` exists.
+Make sure the bucket in `config.js` exists.
 
 Then:
 
@@ -86,49 +86,37 @@ yarn run deploy
 
 This package bundles a lambda-execution-environment-ready version of the Sharp library which allows you to deploy the lambda function from any OS.
 
-TODO-ish:
-> Write something here about about the need to compile sharp on an AWS AMI that matches the one run by lambda cuz Sharp adds a node Addon. When deploying into production, it would be prudent to deploy from an environment which is similar to that of AWS Lambda. More on that is available [here](http://sharp.readthedocs.io/en/stable/install/#aws-lambda).
-
 
 ## Configuration
 The lambda service is designed to be controlled by configuration. From the configuration you can setup how one or more images will be manipulated, with direct access to the underlying methods of Sharp for full control.
 
-```json
-{
-  "sourceBucket": "my-sweet-unicorn-media",
-  "sourcePrefix": "originals/",
-  "destinationBucket": "my-sweet-unicorn-media",
-  "destinationPrefix": "web-ready/",
-  "s3": {
-    "params": {}
-  },
-  "all": [
-    ["rotate"],
-    ["toFormat", "jpeg", { "quality": 80 }]
-  ],
-  "outputs": [
+```js
+export default {
+  name: 'serverless-sharp-image',
+  provider: {
+    profile: 'CH-CH-CH-CHANGEME',
+    stage: 'dev',
+    region: 'us-east-1',
+  },  
+  sourceBucket: 'my-sweet-unicorn-media',
+  sourcePrefix: 'originals/',
+  destinationBucket: 'my-sweet-unicorn-media',
+  destinationPrefix: 'web-ready/',
+  all: [['rotate'], ['toFormat', 'jpeg', { quality: 80 }]],
+  outputs: [
     {
-      "key": "%(filename)s-200x200.jpg",
-      "params": {
-        "ACL": "public-read"
+      key: '%(filename)s-200x200.jpg',
+      params: {
+        ACL: 'public-read',
       },
-      "operations": [
-        ["resize", 200, 200],
-        ["max"],
-        ["withoutEnlargement"]
-      ]
+      operations: [['resize', 200, 200], ['max'], ['withoutEnlargement']],
     },
     {
-      "key": "%(filename)s-100x100.jpg",
-      "operations": [
-        ["resize", 100, 100],
-        ["max"],
-        ["withoutEnlargement"]
-      ]
-    }
-  ]
+      key: '%(filename)s-100x100.jpg',
+      operations: [['resize', 100, 100], ['max'], ['withoutEnlargement']],
+    },
+  ],
 }
-
 ```
 
 
