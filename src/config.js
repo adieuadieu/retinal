@@ -1,4 +1,4 @@
-import customConfig from '../config'
+const customConfig = require('../config')
 
 const DEFAULT_CONFIG = {
   name: 'retinal',
@@ -22,4 +22,7 @@ const DEFAULT_CONFIG = {
   outputs: [],
 }
 
-export default { ...DEFAULT_CONFIG, ...customConfig }
+const config = Object.assign(DEFAULT_CONFIG, customConfig)
+
+module.exports = config
+module.exports.serverless = () => config

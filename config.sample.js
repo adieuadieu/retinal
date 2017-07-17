@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   name: 'serverless-sharp-image',
   provider: {
     profile: 'serverless-admin',

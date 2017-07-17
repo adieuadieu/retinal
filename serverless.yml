@@ -1,11 +1,11 @@
-service: ${file(src/config.js):name}
+service: ${self:custom.project.name}
 
 provider:
   name: aws
   runtime: nodejs6.10
-  profile: ${file(src/config.js):provider.profile}
-  stage: ${file(src/config.js):provider.stage}
-  region: ${file(src/config.js):provider.region}
+  profile: ${self:custom.project.provider.profile}
+  stage: ${self:custom.project.provider.stage}
+  region: ${self:custom.project.provider.region}
   iamRoleStatements:
     -  Effect: "Allow"
        Action:
@@ -16,9 +16,9 @@ provider:
          Fn::Join:
            - ""
            -  - "arn:aws:s3:::"
-              - ${file(src/config.js):sourceBucket}
+              - ${self:custom.project.sourceBucket}
               - "/"
-              - ${file(src/config.js):sourcePrefix}
+              - ${self:custom.project.sourcePrefix}
               - "*"
     -  Effect: "Allow"
        Action:
@@ -37,13 +37,15 @@ provider:
          Fn::Join:
            - ""
            -  - "arn:aws:s3:::"
-              - ${file(src/config.js):destinationBucket}
+              - ${self:custom.project.destinationBucket}
               - "/"
-              - ${file(src/config.js):destinationPrefix}
+              - ${self:custom.project.destinationPrefix}
               - "*"
 
 custom:
   webpackIncludeModules: false # disable auto including modules
+  project: ${file(src/config.js):serverless}
+
 
 plugins:
   - serverless-webpack
@@ -71,14 +73,14 @@ functions:
     handler: handler.processImage
     events:
       - s3:
-          bucket: ${file(src/config.js):sourceBucket}
+          bucket: ${self:custom.project.sourceBucket}
           event: s3:ObjectCreated:*
           rules:
-            - prefix: ${file(src/config.js):sourcePrefix}
+            - prefix: ${self:custom.project.sourcePrefix}
 
 resources:
   Resources:
     imageDestinationBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${file(src/config.js):destinationBucket}
+        BucketName: ${self:custom.project.destinationBucket}

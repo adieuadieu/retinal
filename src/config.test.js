@@ -8,7 +8,7 @@ const {
   destinationBucket,
   destinationPrefix = '',
   outputs,
-} = config
+} = config.serverless()
 
 test('source bucket should be configured', (t) => {
   t.truthy(sourceBucket)
