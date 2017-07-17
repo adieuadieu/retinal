@@ -1,11 +1,11 @@
-service: ${file(config.json):name}
+service: ${file(src/config.js):name}
 
 provider:
   name: aws
   runtime: nodejs6.10
-  profile: ${file(config.json):provider.profile}
-  stage: ${file(config.json):provider.stage}
-  region: ${file(config.json):provider.region}
+  profile: ${file(src/config.js):provider.profile}
+  stage: ${file(src/config.js):provider.stage}
+  region: ${file(src/config.js):provider.region}
   iamRoleStatements:
     -  Effect: "Allow"
        Action:
@@ -16,9 +16,9 @@ provider:
          Fn::Join:
            - ""
            -  - "arn:aws:s3:::"
-              - ${file(config.json):sourceBucket}
+              - ${file(src/config.js):sourceBucket}
               - "/"
-              - ${file(config.json):sourcePrefix}
+              - ${file(src/config.js):sourcePrefix}
               - "*"
     -  Effect: "Allow"
        Action:
@@ -37,9 +37,9 @@ provider:
          Fn::Join:
            - ""
            -  - "arn:aws:s3:::"
-              - ${file(config.json):destinationBucket}
+              - ${file(src/config.js):destinationBucket}
               - "/"
-              - ${file(config.json):destinationPrefix}
+              - ${file(src/config.js):destinationPrefix}
               - "*"
 
 custom:
@@ -71,14 +71,14 @@ functions:
     handler: handler.processImage
     events:
       - s3:
-          bucket: ${file(config.json):sourceBucket}
+          bucket: ${file(src/config.js):sourceBucket}
           event: s3:ObjectCreated:*
           rules:
-            - prefix: ${file(config.json):sourcePrefix}
+            - prefix: ${file(src/config.js):sourcePrefix}
 
 resources:
   Resources:
     imageDestinationBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${file(config.json):destinationBucket}
+        BucketName: ${file(src/config.js):destinationBucket}
