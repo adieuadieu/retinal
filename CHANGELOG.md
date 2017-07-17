@@ -1,8 +1,8 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
 ## [Unreleased]
@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - migrated from webpack 1 to webpack 3.3.0 and serverless-webpack 2.0 from @adieuadieu
-- upgraded dependencies:  serverless@1.17.0, ava@0.21.0, fs-extra@4.0.0, aws-sdk@2.85.0, prettier@1.5.3, babel-preset-env@1.6.0, eslint-plugin-import@2.7.0 from @adieuadieu
+- upgraded dependencies:  serverless@1.17.0, ava@0.21.0 from @adieuadieu
 
 
 ## [0.10.0] - 2017-07-02
