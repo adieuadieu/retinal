@@ -470,9 +470,9 @@ aws-sdk@^2.7.13:
     xml2js "0.4.17"
     xmlbuilder "4.2.1"
 
-aws-sdk@^2.85.0:
-  version "2.85.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.85.0.tgz#e3860761c9a2f8a9017461ab7f3bd075f69dfa8f"
+aws-sdk@^2.87.0:
+  version "2.87.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.87.0.tgz#956f84cb8f326a1d23fe2a09d495656e1a1b6ada"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -3694,9 +3694,9 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lint-staged@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-4.0.1.tgz#05365469898439dbade8a455893cf11e24d12b0f"
+lint-staged@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-4.0.2.tgz#8e83e11e9e1656c09b6117f6db0d55fd4960a1c0"
   dependencies:
     app-root-path "^2.0.0"
     cosmiconfig "^1.1.0"
@@ -5287,9 +5287,9 @@ serverless-webpack@^2.0.0:
     fs-extra "^0.26.7"
     npm-programmatic "0.0.5"
 
-serverless@^1.17.0:
-  version "1.17.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.17.0.tgz#7a221d93c2f50511c94fa89631384bf34efa46b1"
+serverless@^1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.18.0.tgz#21cccd432da4310dcd923565ae3234bb7bc8f16c"
   dependencies:
     apollo-client "^1.4.2"
     archiver "^1.1.0"
