@@ -25,7 +25,14 @@
     "type": "git",
     "url": "https://github.com/adieuadieu/serverless-sharp-image.git"
   },
-  "keywords": ["serverless", "sharp", "libvips", "image", "resize", "optimize"],
+  "keywords": [
+    "serverless",
+    "sharp",
+    "libvips",
+    "image",
+    "resize",
+    "optimize"
+  ],
   "author": "Marco Lüthy",
   "license": "MIT",
   "bugs": {
@@ -35,6 +42,7 @@
   "dependencies": {
     "aws-sdk": "^2.85.0",
     "babel-runtime": "^6.23.0",
+    "exif-js": "^2.2.1",
     "mime-types": "^2.1.15",
     "prettier": "^1.5.3",
     "sharp": "^0.18.2",
@@ -75,7 +83,9 @@
   },
   "babel": {
     "sourceMaps": "inline",
-    "plugins": ["transform-runtime"],
+    "plugins": [
+      "transform-runtime"
+    ],
     "presets": [
       [
         "env",
@@ -90,22 +100,44 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "plugins": ["ava", "import"],
-    "extends": ["airbnb-base", "plugin:ava/recommended"],
+    "plugins": [
+      "ava",
+      "import"
+    ],
+    "extends": [
+      "airbnb-base",
+      "plugin:ava/recommended"
+    ],
     "settings": {
       "import/parser": "babel-eslint",
       "import/resolve": {
-        "moduleDirectory": ["node_modules", "src", "./"]
+        "moduleDirectory": [
+          "node_modules",
+          "src",
+          "./"
+        ]
       }
     },
     "rules": {
       "no-console": 0,
-      "semi": ["error", "never"],
-      "comma-dangle": ["error", "always-multiline"],
-      "space-before-function-paren": ["error", "always"]
+      "semi": [
+        "error",
+        "never"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "space-before-function-paren": [
+        "error",
+        "always"
+      ]
     }
   },
   "lint-staged": {
-    "*.{js,ts}": ["npm run format", "git add"]
+    "*.{js,ts}": [
+      "npm run format",
+      "git add"
+    ]
   }
 }

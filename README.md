@@ -91,7 +91,7 @@ This package bundles a lambda-execution-environment-ready version of the Sharp l
 The lambda service is designed to be controlled by configuration. From the configuration you can setup how one or more images will be manipulated, with direct access to the underlying methods of Sharp for full control.
 
 ```js
-export default {
+module.exports = {
   name: 'serverless-sharp-image',
   provider: {
     profile: 'CH-CH-CH-CHANGEME',
