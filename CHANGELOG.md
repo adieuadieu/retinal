@@ -11,8 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - migrated from webpack 1 to webpack 3.3.0 and serverless-webpack 2.0
-- upgraded dependencies:  serverless@1.17.0, ava@0.21.0
+- upgraded dependencies:  serverless@1.18.0, ava@0.21.0
 - **BREAKING:** converted the user `/config.json` file to JS format
+
 
 ## [0.10.0] - 2017-07-02
 ### Added
