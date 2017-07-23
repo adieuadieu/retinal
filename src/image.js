@@ -32,7 +32,7 @@ export default (async function processItem ({
   return Promise.all(
     streams.map(async (stream, index) => {
       const imageObjectKey = makeKey(outputs[index].key, context)
-      const imageMetadata = await getMetadata(stream, s3Metadata)
+      const imageMetadata = await getMetadata(stream, s3Metadata, outputs[index])
 
       console.log('imageMetadata', imageMetadata)
 

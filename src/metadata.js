@@ -13,7 +13,7 @@ export const MIME_TYPES = {
   json: 'application/json',
 }
 
-export async function getMetadata (sharpStream, s3MetaData = {}) {
+export async function getMetadata (sharpStream, s3MetaData = {}, outputConfig) {
   let data = await sharpStream.metadata()
   data.contentType = MIME_TYPES[data.format]
   data.s3 = s3MetaData
@@ -29,7 +29,7 @@ export async function getMetadata (sharpStream, s3MetaData = {}) {
   }
 
   if (middleware) {
-    data = await middleware(data)
+    data = await middleware(data, outputConfig)
   }
 
   return data

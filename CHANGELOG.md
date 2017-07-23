@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - added prettier-eslint to format code in pre-commit script
+- Save source-image metadata along with the resized images as JSON in S3 (#21)
+- Parsed EXIF data in JSON metadata (#21)
+- Middleware for handling metadata, return false to skip saving output image to S3
 
 ### Changed
 - migrated from webpack 1 to webpack 3.3.0 and serverless-webpack 2.0
