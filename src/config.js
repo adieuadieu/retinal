@@ -20,6 +20,11 @@ const DEFAULT_CONFIG = {
   },
   all: [],
   outputs: [],
+  metadata: {
+    saveJson: false,
+    rekognition: false,
+    middleware: undefined,
+  },
 }
 
 const config = Object.assign(DEFAULT_CONFIG, customConfig)

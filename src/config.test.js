@@ -8,6 +8,7 @@ const {
   destinationBucket,
   destinationPrefix = '',
   outputs,
+  metadata,
 } = config.serverless()
 
 test('source bucket should be configured', (t) => {
@@ -64,4 +65,28 @@ test('should be able to write to the configured S3 destination bucket', async (t
   await t.notThrows(promise)
 
   await remove([key])
+})
+
+test('metadata configuration should be valid', async (t) => {
+  t.truthy(['boolean', 'object'].includes(typeof metadata), 'metadata should be false or an object')
+
+  if (metadata) {
+    const { saveJson, rekognition, middleware } = metadata
+    t.truthy(['undefined', 'boolean'].includes(typeof saveJson))
+    t.truthy(['undefined', 'boolean'].includes(typeof rekognition))
+    t.truthy(['undefined', 'function'].includes(typeof middleware))
+
+    if (middleware) {
+      const promise = middleware()
+      t.truthy(promise instanceof Promise)
+      await t.notThrows(promise)
+    }
+
+    if (rekognition) {
+      t.truthy(
+        saveJson || middleware,
+        'no point enabling rekognition when no middleware or saveJson is set'
+      )
+    }
+  }
 })

@@ -3,7 +3,7 @@ module.exports = {
   provider: {
     profile: 'serverless-admin',
     stage: 'dev',
-    region: 'us-west-2',
+    region: 'eu-west-1',
   },
   sourceBucket: 'marco-test-bucket',
   sourcePrefix: 'serverless-sharp-image/incoming',
@@ -30,4 +30,9 @@ module.exports = {
       operations: [['resize', 100, 100], ['max'], ['withoutEnlargement']],
     },
   ],
+  metadata: {
+    saveJson: false,
+    rekognition: false,
+    middleware: undefined,
+  },
 }
