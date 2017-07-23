@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 
+## [0.11.0] - 2017-07-23
+### Changed
+- add output image's ContentType to S3 Object's parameters (previously defaulted to `application/octet-stream`) (#43, #44)
+
+
 ## [0.10.0] - 2017-07-02
 ### Added
 - added this CHANGELOG from @adieuadieu
