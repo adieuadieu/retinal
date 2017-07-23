@@ -133,7 +133,7 @@ Note that method's are performed in order they appear in the configuration, and 
 - key: uses [sprintf](https://github.com/alexei/sprintf.js) internally
 - params: set some specific S3 options for the image when uploaded to the destination S3 bucket. See more about the param options on the [AWS S3's upload method documentation](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)
 
-### Available arguments for use in the output object key
+### Available placeholders for use in the output S3 object's key
 
 - **key** -
   The full object key with which the service was invoked
