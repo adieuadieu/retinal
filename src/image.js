@@ -34,8 +34,6 @@ export default (async function processItem ({
       const imageObjectKey = makeKey(outputs[index].key, context)
       const imageMetadata = await getMetadata(stream, s3Metadata, outputs[index])
 
-      console.log('imageMetadata', imageMetadata)
-
       if (imageMetadata) {
         return Promise.all([
           upload(stream, {

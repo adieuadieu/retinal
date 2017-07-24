@@ -78,6 +78,9 @@ functions:
           rules:
             - prefix: ${self:custom.project.sourcePrefix}
 
+
+# Comment out the imageDestinationBucket section
+# if you want to use previously existing buckets
 resources:
   Resources:
     imageDestinationBucket:
