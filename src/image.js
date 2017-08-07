@@ -6,7 +6,7 @@ import { makeKey, decodeS3EventKey } from './utils'
 
 const { outputs, metadata } = config
 
-export default (async function processItem ({
+export default async function processItem ({
   eventName,
   s3: { object: { key: undecodedKey } } = { object: { key: false } },
 }) {
@@ -55,4 +55,4 @@ export default (async function processItem ({
       return []
     })
   )
-})
+}

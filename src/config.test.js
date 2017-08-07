@@ -73,7 +73,7 @@ test('metadata configuration should be valid', async (t) => {
   if (metadata) {
     const { saveJson, rekognition, middleware } = metadata
     t.truthy(['undefined', 'boolean'].includes(typeof saveJson))
-    t.truthy(['undefined', 'boolean'].includes(typeof rekognition))
+    t.truthy(['undefined', 'boolean', 'object'].includes(typeof rekognition))
     t.truthy(['undefined', 'function'].includes(typeof middleware))
 
     if (middleware) {
@@ -83,6 +83,8 @@ test('metadata configuration should be valid', async (t) => {
     }
 
     if (rekognition) {
+      t.is(typeof rekognition, 'object')
+
       t.truthy(
         saveJson || middleware,
         'no point enabling rekognition when no middleware or saveJson is set'

@@ -1,6 +1,6 @@
 import exifReader from 'exif-reader'
-
 import config from './config'
+import * as rekognitionFunctions from './rekognition'
 
 const { metadata: { saveJson, rekognition, middleware } } = config
 
@@ -24,8 +24,20 @@ export async function getMetadata (sharpStream, s3MetaData = {}, outputConfig) {
   }
 
   if (rekognition) {
-    // @TODO
-    data.rekognition = {}
+    const keys = Object.keys(rekognition)
+    const results = await Promise.all(
+      keys.map(method =>
+        rekognitionFunctions[method](
+          typeof rekognition[method] === 'object' ? rekognition[method] : {},
+          s3MetaData.Key
+        )
+      )
+    )
+
+    data.rekognition = results.reduce(
+      (reduced, item, index) => ({ ...reduced, [keys[index]]: item }),
+      {}
+    )
   }
 
   if (middleware) {
