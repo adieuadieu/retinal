@@ -22,9 +22,9 @@ test('should have appropriate content-type', async (t) => {
   // console.log('\nmetadata:', metadata)
 })
 
-test.todo('should return if middleware returns falsey')
+test.todo('should return if middleware returns falsey', (t) => {})
 
-test.todo('should include data returned from middleware')
+test.todo('should include data returned from middleware', (t) => {})
 
 test('should include data from Rekognition if configured', async (t) => {
   const stream = sharp(testImage)
