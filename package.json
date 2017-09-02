@@ -40,11 +40,11 @@
   },
   "homepage": "https://github.com/adieuadieu/serverless-sharp-image",
   "dependencies": {
-    "aws-sdk": "^2.104.0",
+    "aws-sdk": "^2.108.0",
     "babel-runtime": "^6.26.0",
     "exif-reader": "^1.0.2",
-    "mime-types": "^2.1.16",
-    "prettier": "^1.5.3",
+    "mime-types": "^2.1.17",
+    "prettier": "^1.6.1",
     "sharp": "^0.18.2",
     "sprintf-js": "^1.1.1"
   },
