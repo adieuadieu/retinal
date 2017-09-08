@@ -464,27 +464,13 @@ ava@^0.22.0:
     unique-temp-dir "^1.0.0"
     update-notifier "^2.1.0"
 
-aws-sdk@^2.108.0:
-  version "2.108.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.108.0.tgz#8b6f6ed8692bfc6cac1782d0424f9867d1baa5bd"
+aws-sdk@^2.111.0, aws-sdk@^2.75.0:
+  version "2.111.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.111.0.tgz#a834ce13ff440b348e45e047c8dc7bd696f1b26d"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
     events "^1.1.1"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.0.1"
-    xml2js "0.4.17"
-    xmlbuilder "4.2.1"
-
-aws-sdk@^2.7.13:
-  version "2.80.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.80.0.tgz#61ced747eb981609483aec53e8d654d3cc9d1435"
-  dependencies:
-    buffer "4.9.1"
-    crypto-browserify "1.0.9"
     jmespath "0.15.0"
     querystring "0.2.0"
     sax "1.2.1"
@@ -1484,6 +1470,10 @@ chokidar@^1.4.2, chokidar@^1.7.0:
 ci-info@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.0.0.tgz#dc5285f2b4e251821683681c381c3388f46ec534"
+
+ci-info@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.1.1.tgz#47b44df118c48d2597b56d342e7e25791060171a"
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
@@ -5494,18 +5484,18 @@ serverless-webpack@^2.2.2:
     npm-programmatic "0.0.5"
     ts-node "^3.2.0"
 
-serverless@^1.21.0:
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.21.0.tgz#f651c2d71273c28d83457a242226f48cda5bcfef"
+serverless@^1.21.1:
+  version "1.21.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.21.1.tgz#083274fc996e23a937c3f6636de5e6dce9c29fdf"
   dependencies:
     "@serverless/fdk" "^0.5.1"
     apollo-client "^1.4.2"
     archiver "^1.1.0"
     async "^1.5.2"
-    aws-sdk "^2.7.13"
+    aws-sdk "^2.75.0"
     bluebird "^3.4.0"
     chalk "^2.0.0"
-    ci-info "^1.0.0"
+    ci-info "^1.1.1"
     download "^5.0.2"
     filesize "^3.3.0"
     fs-extra "^0.26.7"

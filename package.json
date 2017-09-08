@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/adieuadieu/serverless-sharp-image",
   "dependencies": {
-    "aws-sdk": "^2.108.0",
+    "aws-sdk": "^2.111.0",
     "babel-runtime": "^6.26.0",
     "exif-reader": "^1.0.2",
     "mime-types": "^2.1.17",
@@ -73,7 +73,7 @@
     "nyc": "^11.2.0",
     "prettier-eslint": "^7.1.0",
     "prettier-eslint-cli": "^4.3.0",
-    "serverless": "^1.21.0",
+    "serverless": "^1.21.1",
     "serverless-webpack": "^2.2.2",
     "tap-xunit": "^1.7.0",
     "webpack": "^3.5.5"
