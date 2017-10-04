@@ -453,9 +453,9 @@ ava@0.22.0:
     unique-temp-dir "^1.0.0"
     update-notifier "^2.1.0"
 
-aws-sdk@2.125.0:
-  version "2.125.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.125.0.tgz#c0c3131b57eef4a051c7266cc3b47a704e7e36ab"
+aws-sdk@2.126.0:
+  version "2.126.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.126.0.tgz#f77e794153b68b0304f526b6cff4e10cc849b274"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -1133,7 +1133,7 @@ bluebird@^2.3, bluebird@^2.9.x:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
-bluebird@^3.0.0, bluebird@^3.4.0, bluebird@^3.4.1:
+bluebird@^3.0.0, bluebird@^3.4.0, bluebird@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
@@ -2657,7 +2657,7 @@ formidable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.1.1.tgz#96b8886f7c3c3508b932d6bd70c4d3a88f35f1a9"
 
-fs-extra@4.0.2:
+fs-extra@4.0.2, fs-extra@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.2.tgz#f91704c53d1b461f893452b0c307d9997647ab6b"
   dependencies:
@@ -4268,12 +4268,6 @@ npm-path@^2.0.2:
   dependencies:
     which "^1.2.10"
 
-npm-programmatic@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/npm-programmatic/-/npm-programmatic-0.0.7.tgz#f6e22cc7e351275b748d8f479ab266a685df49ae"
-  dependencies:
-    bluebird "^3.4.1"
-
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -5289,17 +5283,16 @@ semver@~5.0.1:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.0.3.tgz#77466de589cd5d3c95f138aa78bc569a3cb5d27a"
 
-serverless-webpack@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/serverless-webpack/-/serverless-webpack-3.1.0.tgz#f4113a061a7b48ddbe72acd7e1babab816192715"
+serverless-webpack@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/serverless-webpack/-/serverless-webpack-3.1.1.tgz#059713b30a1df61e14f0a212d9bfa3322cfacbe2"
   dependencies:
     archiver "^2.0.0"
-    bluebird "^3.4.0"
-    fs-extra "^0.26.7"
+    bluebird "^3.5.0"
+    fs-extra "^4.0.2"
     glob "^7.1.2"
     is-builtin-module "^1.0.0"
     lodash "^4.17.4"
-    npm-programmatic "^0.0.7"
     semver "^5.4.1"
     ts-node "^3.2.0"
 
