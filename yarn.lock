@@ -453,9 +453,9 @@ ava@0.22.0:
     unique-temp-dir "^1.0.0"
     update-notifier "^2.1.0"
 
-aws-sdk@2.128.0:
-  version "2.128.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.128.0.tgz#b9be561c5e3733c0068c6121b587674534662d4b"
+aws-sdk@2.130.0:
+  version "2.130.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.130.0.tgz#f0c6da7dbda9a15cb0c2beb3030f6da2a4c03c36"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
