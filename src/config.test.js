@@ -1,4 +1,5 @@
 import test from 'ava'
+import AWS from 'aws-sdk'
 import config from './config'
 import { get, upload, remove } from './s3'
 
@@ -10,7 +11,18 @@ const {
   outputs,
 } = config
 
-test('source bucket should be configured', (t) => {
+test('AWS profile should have sufficient permissions for deploy(initial)', async (t) => {
+  const iam = new AWS.IAM({ apiVersion: '2010-05-08' })
+  const currentAwsUser = await iam.getUser({}).promise().then(done => done)
+  const params = {
+    PolicySourceArn: currentAwsUser.User.Arn,
+    ActionNames: ['arn:aws:iam::aws:policy/AmazonS3FullAccess'],
+  }
+  const policyDryRun = await iam.simulatePrincipalPolicy(params).promise().then(data => data)
+  t.is(policyDryRun.EvaluationResults[0].EvalDecision, 'allowed')
+})
+
+test('source bucket should be configured(initial)', (t) => {
   t.truthy(sourceBucket)
   t.not(sourceBucket.length, 0)
 })
@@ -20,13 +32,13 @@ test('destination bucket should be configured', (t) => {
   t.not(destinationBucket.length, 0)
 })
 
-test('there should be at least 1 output defined in the "outputs" array', (t) => {
+test('there should be at least 1 output defined in the "outputs" array(initial)', (t) => {
   t.truthy(outputs)
   t.truthy(outputs instanceof Array)
   t.not(outputs.length, 0)
 })
 
-test('each output must have at least 1 operation defined in each outputs "operations" array', (t) => {
+test('each output must have at least 1 operation defined in each outputs "operations" array(initial)', (t) => {
   outputs.forEach(({ operations }) => {
     t.truthy(operations)
     t.truthy(operations instanceof Array)
@@ -34,7 +46,7 @@ test('each output must have at least 1 operation defined in each outputs "operat
   })
 })
 
-test('each output must have an S3 object key defined', (t) => {
+test('each output must have an S3 object key defined(initial)', (t) => {
   outputs.forEach(({ key }) => {
     t.truthy(key)
     t.is(typeof key, 'string')
