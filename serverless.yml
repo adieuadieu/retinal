@@ -1,49 +1,56 @@
-service: ${file(config.json):name}
+service: ${self:custom.project.name}
 
 provider:
   name: aws
   runtime: nodejs6.10
-  profile: ${file(config.json):provider.profile}
-  stage: ${file(config.json):provider.stage}
-  region: ${file(config.json):provider.region}
+  profile: ${self:custom.project.provider.profile}
+  stage: ${self:custom.project.provider.stage}
+  region: ${self:custom.project.provider.region}
   iamRoleStatements:
-    -  Effect: "Allow"
-       Action:
-         - "s3:ListBucket"
-         - "s3:GetObject"
-         - "s3:GetObjectAcl"
-       Resource:
-         Fn::Join:
-           - ""
-           -  - "arn:aws:s3:::"
-              - ${file(config.json):sourceBucket}
-              - "/"
-              - ${file(config.json):sourcePrefix}
-              - "*"
-    -  Effect: "Allow"
-       Action:
-         - "s3:ListBucket"
-         - "s3:PutObject"
-         - "s3:DeleteObject"
-         - "s3:GetObjectAcl"
-         - "s3:ListBucketMultipartUploads"
-         - "s3:ListMultipartUploadParts"
-         - "s3:PutObject"
-         - "s3:PutObjectAcl"
-         - "s3:PutObjectTagging"
-         - "s3:PutObjectVersionAcl"
-         - "s3:PutObjectVersionTagging"
-       Resource:
-         Fn::Join:
-           - ""
-           -  - "arn:aws:s3:::"
-              - ${file(config.json):destinationBucket}
-              - "/"
-              - ${file(config.json):destinationPrefix}
-              - "*"
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+        - "s3:GetObject"
+        - "s3:GetObjectAcl"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - ${self:custom.project.sourceBucket}
+            - "/"
+            - ${self:custom.project.sourcePrefix}
+            - "*"
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+        - "s3:PutObject"
+        - "s3:DeleteObject"
+        - "s3:GetObjectAcl"
+        - "s3:ListBucketMultipartUploads"
+        - "s3:ListMultipartUploadParts"
+        - "s3:PutObject"
+        - "s3:PutObjectAcl"
+        - "s3:PutObjectTagging"
+        - "s3:PutObjectVersionAcl"
+        - "s3:PutObjectVersionTagging"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - ${self:custom.project.destinationBucket}
+            - "/"
+            - ${self:custom.project.destinationPrefix}
+            - "*"
+    - Effect: "Allow"
+      Action:
+        - rekognition:DetectFaces
+
+
 
 custom:
   webpackIncludeModules: false # disable auto including modules
+  project: ${file(src/config.js):serverless}
+
 
 plugins:
   - serverless-webpack
@@ -71,14 +78,17 @@ functions:
     handler: handler.processImage
     events:
       - s3:
-          bucket: ${file(config.json):sourceBucket}
+          bucket: ${self:custom.project.sourceBucket}
           event: s3:ObjectCreated:*
           rules:
-            - prefix: ${file(config.json):sourcePrefix}
+            - prefix: ${self:custom.project.sourcePrefix}
 
+
+# Comment out the imageDestinationBucket section
+# if you want to use previously existing buckets
 resources:
   Resources:
     imageDestinationBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: ${file(config.json):destinationBucket}
+        BucketName: ${self:custom.project.destinationBucket}

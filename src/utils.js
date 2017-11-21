@@ -26,3 +26,7 @@ export function makeKey (template, context) {
 export function decodeS3EventKey (key) {
   return key && key.length ? decodeURIComponent(key.replace(/\+/g, ' ')) : key
 }
+
+export function encodeS3Key (key) {
+  return key && key.length ? encodeURIComponent(key.replace(' ', '+')) : key
+}

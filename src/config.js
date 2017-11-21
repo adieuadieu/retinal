@@ -1,5 +1,33 @@
-import config from '../config.json'
+const customConfig = require('../config')
 
-// TODO: add defaults and merge with config from json
+const DEFAULT_CONFIG = {
+  name: 'retinal',
+  provider: {
+    profile: undefined,
+    stage: 'dev',
+    region: undefined,
+  },
+  sourceBucket: undefined,
+  sourcePrefix: undefined,
+  destinationBucket: undefined,
+  destinationPrefix: undefined,
+  s3: {
+    params: {
+      Metadata: {
+        generator: 'created by a Retinal lambda function',
+      },
+    },
+  },
+  all: [],
+  outputs: [],
+  metadata: {
+    saveJson: false,
+    rekognition: false,
+    middleware: undefined,
+  },
+}
 
-export default config
+const config = Object.assign(DEFAULT_CONFIG, customConfig)
+
+module.exports = config
+module.exports.serverless = () => config
