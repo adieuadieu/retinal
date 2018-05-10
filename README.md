@@ -155,7 +155,7 @@ Note that method's are performed in order they appear in the configuration, and 
   *Example*:
    - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
     `%(crumbs[0])s` - "unicorns"  
-    `%(crumbs[2])s` - "pixies"  
+    `%(crumbs[2])s` - "pixie"  
 
 - **directory** -
   The "directory" of the S3 object
