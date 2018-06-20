@@ -26,6 +26,8 @@ A tool to take images uploaded to an S3 bucket and produce one or more images of
 
 
 ## Installation
+Please note, currently the master branch is broken, please use [v0.11.0](https://github.com/adieuadieu/retinal/releases/tag/v0.11.0) instead. See [comment](https://github.com/adieuadieu/retinal/issues/57#issuecomment-355129305).
+
 Installation can be achieved with the following commands
 
 ```bash
