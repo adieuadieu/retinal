@@ -99,7 +99,7 @@ module.exports = {
     profile: 'CH-CH-CH-CHANGEME',
     stage: 'dev',
     region: 'us-east-1',
-  },
+  },  
   sourceBucket: 'my-sweet-unicorn-media',
   sourcePrefix: 'originals/',
   destinationBucket: 'my-sweet-unicorn-media',
@@ -140,44 +140,44 @@ Note that method's are performed in order they appear in the configuration, and 
   The full object key with which the service was invoked
 
   *Example*:
-  - Given object key: `unicorns/and/pixie/sticks/omg.jpg`
+  - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
     `%(key)s` - "unicorns/and/pixie/sticks/omg.jpg"
 
 - **type** -
   The Content-Type of the object, as returned by S3
 
   *Example*:
-  - Given Content-Type: `image/jpeg`
+  - Given Content-Type: `image/jpeg`  
     `%(type)s` - "image/jpeg"
 
 - **crumbs** -
   The crumbs of the S3 object as an array (e.g. the object key split by "/", not including the filename)
 
   *Example*:
-   - Given object key: `unicorns/and/pixie/sticks/omg.jpg`
-    `%(crumbs[0])s` - "unicorns"
-    `%(crumbs[2])s` - "pixie"
+   - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
+    `%(crumbs[0])s` - "unicorns"  
+    `%(crumbs[2])s` - "pixie"  
 
 - **directory** -
   The "directory" of the S3 object
 
-  *Example*:
-  - Given object key: `unicorns/and/pixie/sticks/omg.jpg`
+  *Example*:  
+  - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
     `%(directory)s` - "unicorns/and/pixie/sticks"
 
 - **filename** -
   The file name (minus the last extension)
 
-  *Example*:
-  - Given object key: `unicorns/and/pixie/sticks/omg.jpg`
+  *Example*:  
+  - Given object key: `unicorns/and/pixie/sticks/omg.jpg`  
     `%(filename)s` - "omg"
 
 - **extension** -
   The file's extension determined by the Content-Type returned by S3
 
-  *Example*:
-  - Given Content-Type: `image/png`
-    `%(extension)s` - "png"
+  *Example*:  
+  - Given Content-Type: `image/png`  
+    `%(extension)s` - "png"  
 
 
 ## Building
