@@ -81,7 +81,7 @@ You can also try out the service by invoking it. First deploy it with `yarn run 
 ## Deployment
 
 ```bash
-yarn run deploy
+serverless deploy -v
 ```
 
 This package bundles a lambda-execution-environment-ready version of the Sharp library which allows you to deploy the lambda function from any OS.
