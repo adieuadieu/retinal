@@ -127,11 +127,10 @@ TODO: document configuration better/more detail
 
 *outputs* - define the files you wish to generate from the source
 
-Outputs are lists of Sharp's [methods](http://sharp.readthedocs.io/en/stable/api/#resizing) you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
-Note that method's are performed in order they appear in the configuration, and differing order can produce different results.
-
 - key: uses [sprintf](https://github.com/alexei/sprintf.js) internally
 - params: set some specific S3 options for the image when uploaded to the destination S3 bucket. See more about the param options on the [AWS S3's upload method documentation](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)
+- operations: Lists of Sharp's [methods](http://sharp.readthedocs.io/en/stable/api/#resizing) you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
+Note that method's are performed in order they appear in the configuration, and differing order can produce different results.
 
 ### Available placeholders for use in the output S3 object's key
 
