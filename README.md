@@ -1,4 +1,4 @@
-# Serverless Sharp Image
+# Retinal
 
 [Serverless Framework-based](https://www.github.com/serverless/serverless) AWS Lambda function triggered by S3 events to resize images with the excellent [Sharp](https://github.com/lovell/sharp) module. By using the Sharp module (which uses the libvips library), image processing can be 3x-5x faster than using ImageMagick, thus reducing the time your function spends running, which can potentially dramatically decrease your lambda function's cost. The function's behaviour can be controlled entirely with configuration.
 
@@ -26,6 +26,8 @@ A tool to take images uploaded to an S3 bucket and produce one or more images of
 
 
 ## Installation
+Please note, currently the master branch is broken, please use [v0.11.0](https://github.com/adieuadieu/retinal/releases/tag/v0.11.0) instead. See [comment](https://github.com/adieuadieu/retinal/issues/57#issuecomment-355129305).
+
 Installation can be achieved with the following commands
 
 ```bash
@@ -81,7 +83,7 @@ You can also try out the service by invoking it. First deploy it with `yarn run 
 ## Deployment
 
 ```bash
-yarn run deploy
+serverless deploy -v
 ```
 
 This package bundles a lambda-execution-environment-ready version of the Sharp library which allows you to deploy the lambda function from any OS.
@@ -127,11 +129,10 @@ TODO: document configuration better/more detail
 
 *outputs* - define the files you wish to generate from the source
 
-Outputs are lists of Sharp's [methods](http://sharp.readthedocs.io/en/stable/api/#resizing) you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
-Note that method's are performed in order they appear in the configuration, and differing order can produce different results.
-
 - key: uses [sprintf](https://github.com/alexei/sprintf.js) internally
 - params: set some specific S3 options for the image when uploaded to the destination S3 bucket. See more about the param options on the [AWS S3's upload method documentation](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)
+- operations: Lists of Sharp's [methods](http://sharp.readthedocs.io/en/stable/api/#resizing) you want performed on your image. For example if you want to perform the Sharp method `sharp(image).resize(200, 300)` you would define this in your configuration as `["resize", 200, 300]`
+Note that method's are performed in order they appear in the configuration, and differing order can produce different results.
 
 ### Available placeholders for use in the output S3 object's key
 
