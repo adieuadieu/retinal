@@ -11,11 +11,13 @@
   },
   "scripts": {
     "test": "npm run lint && nyc ava",
+    "test:initial": "ava --match='*initial*'",
     "watch:test": "ava --watch",
     "lint": "npm run lint:eslint -s",
     "lint:eslint": "eslint --ext .js .",
     "format": "prettier-eslint *.js src/**/*.js",
     "coverage": "nyc report",
+    "deploy:initial": "npm run test:initial && serverless deploy -v",
     "deploy": "npm test && serverless deploy -v",
     "invoke": "serverless invoke --function sharpImage --path ./event.json --log",
     "postinstall": "if [ ! -f ./config.js ]; then cp ./config.sample.js ./config.js; fi && if [ ! -f ./event.json ]; then cp ./event.sample.json ./event.json; fi",

@@ -19,7 +19,7 @@ const options = {
 
 const { all, outputs } = options
 
-test('process input image based on configuration options', async (t) => {
+test('process input image based on configuration options(initial)', async (t) => {
   t.throws(sharpify(undefined, undefined, undefined), TypeError)
 
   const imageStreams = await sharpify(testImage, options, false)
